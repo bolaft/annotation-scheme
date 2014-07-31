@@ -1,0 +1,53 @@
+\item expression d'opinion  (e.g. "what a nightmare")
+	\item rapport d'action réalisée / constat de l'état d'un système ou du résultat d'une action
+	\item ligne de code, de log, de configuration ou de commande
+	\item méta discours pour annoncer une question
+	\item question
+	\item salutation générique ou ciblée (avec nom d'auteur)
+	\item signoff open/close attente/pas attente (dissocié de remerciement et d'appel à l'aide) (e.g. "see you", "adios")
+	\item appel à l'aide (e.g. "please help!")
+	\item remerciement par avance, remerciement pour service rendu (e.g. "thanks")
+	\item signature non-prototypique / signature prototypique
+	\item pub prototypique
+	\item méta : ligne séparatrice / ligne vide
+	\item référence à un autre post ou référence à un objet précédemment introduit ou décrit
+	\item description d'un système ou d'un environnement
+	\item objectif, ce que souhaite réaliser l'auteur
+	\item assertion / donnée
+	\item rapport de recherche de solution
+	\item référence à une documentation
+	\item référence identifiée / non identifiée
+	\item complément, précision, spécification sur le souhait ou la manière de traiter un souhait (contrainte sur la solution)
+	\item coordonnées
+	\item souhait de la forme de la solution
+	\item donnée, constat de comment ça fonctionne pour d'autres, sur un autre système
+	\item suggestion d'action à réaliser
+	\item suggestion d'amélioration de service
+	\item méta discours pour qualifier l'énoncé qui précède (e.g. "just a thought")
+	\item annonce de poursuite sur un autre canal (wishlist)
+	\item méta discours pour annoncer un problème
+	\item mention de la source d'information ayant suggéré les actions à réaliser
+	\item rapport d'action avec dimension transverse (qualifier la réussite des actions réalisées)
+	\item méta discours porte sur l'état du message, une appréciation
+	\item solution possible envisagée (plan B), restant à explorer, mais non testée
+	\item question rhétorique
+	\item commentaire via anecdote reliée au sujet
+	\item interrogation personnelle sans attente de réponse ("I wonder how it works")
+	\item citation
+	\item proposition de réponse via une référence directe ou indirecte à la documentation (~ réponse indirecte)
+	\item accusé de réception d'une réponse (confirmation d'une réponse satisfaisante, ou non satisfaisante parce que l'on n'a pas pu l'appliquer ou parce qu'elle n'a pas répondu au besoin)
+	\item accusé de réception sans retour sur le résultat
+	\item méta discours citation (e.g. "on Tue, 23/12/2005 Marcus wrote:")
+	\item réponse directe sous la forme d'instructions à réaliser / instructions
+	\item complément de réponse, confirmation, commentaire sur une réponse (quel que soit l'intervenant ?)
+	\item rejet d'une réponse
+	\item fermeture de thread
+	\item piste potentielle de cause
+	\item assimilation du problème à un autre
+	\item réponse rapportée ("voilà ce que d'autres suggèrent de faire")
+	\item référence à une source tierce
+	\item méta annonce d'une procédure solution (une commande ?)
+	\item méta suppression d'une portion de la citation ("[snip]")
+	\item positionnement par rapport à réponse / acquittement
+	\item complément de question
+	\item question correction

@@ -1,0 +1,388 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx, booktabs}
+\usepackage{float}
+
+\restylefloat{figure}
+\restylefloat{table[H]}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\begin{document}
+
+\title{Speech act annotation}
+
+\begin{titlepage}
+
+\maketitle
+
+\tableofcontents
+
+\end{titlepage}
+
+\section{Introduction}
+
+Our goal is to develop an annotation scheme and protocol for the classification of email sentences in terms of speech acts. A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in our previous work.
+
+\section{Background and Related Work}
+
+In this section we introduce the concept of dialog act (DA) and provide details concerning a few works related to the field of speech act recognition and email segmentation.
+
+\subsection{Background}
+
+Speech act theory \cite{austin1975things} attempts to describe utterances in terms of communicative function (e.g. question, answer, thanks...). Indeed, utterances are not limited to their semantic content, they also have a communicative function : a goal, and an effect. For Austin, they can be analyzed at three levels: locutory (the linguistic characteristics of the utterance), illocutory (the intention of the speaker) and perlocutory (the real-world effects of the utterance). When we refer to speech acts\footnote{Also known as dialog acts}, we are interested in the illocutory level of utterance analysis. 
+
+Thus, in most works, it's in terms of speech acts that interactions between participants of a conversation are modeled. Austin considers utterances as actions performed by a speaker ; this is based on the idea that every enunciation is the realization of a social act. Verbs that specify these actions are called \textit{performative verbs}, such as when someone says "I grant you the title of captain". But speech acts are not only constituted by these kinds of verbs. \cite{searle1976taxonomy} offers five classes of dialog acts : assertives (assertion...), directives (order, request, advice, etc.), commissives (promise, invitation, etc.), expressives (congratulations, thanks, etc.) and declarations (war declaration, nomination, baptism, etc.).
+
+There are a number of different speech act taxonomies \cite{traum200020}. Table \ref{fig:fundamentalTaxonomies} details two founding taxonomies: Austin's and Searle's. Table \ref{fig:emailTaxonomies} presents a few recent taxonomies used in the context of online conversation analysis.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{c c Y}
+		\toprule
+		Act & Description or examples & Reference \\
+		\midrule
+		Verdictives & to condemn, to decree... & \\
+		Exercitives & to command, to order, to forgive... & \\
+		Commissives & to promise, to guarantee, to bet, to swear... & \cite{austin1975things} \\
+		Behabitives & to apologize, to thank, to criticize... & \\
+		Expositives & to assert, to deny, to postulate... & \\
+		\midrule
+		Assertives & asserts a state of fact & \\
+		Directives & attempt to make an interlocutor do something & \\
+		Commissives & commitment on the part of the speaker & \cite{searle1976taxonomy} \\
+		Expressives & expression of a psychological state & \\
+		Declarations & statement with a direct impact & \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Foundational taxonomies for speech acts categorization}
+	\label{fig:fundamentalTaxonomies}
+\end{table}
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y c c}
+		\toprule
+		Act & Corpus or kind of corpus & Reference \\
+		\midrule
+		Disclosure &  & \\
+		Edification &  & \\
+		Advisement &  & \\
+		Confirmation & multi-domain & \cite{Lampert_classifyingspeech} \\
+		Question &  & \\
+		Acknowledgement &  & \\
+		Interpretation &  & \\
+		Reflection &  & \\
+		\midrule
+		Direct request
+		Question-request &  & \\
+		Open question &  & \\
+		First person commitment & corporate mail & \cite{de2013classification} \\
+		First person expression of feeling &  & \\
+		First person other &  & \\
+		Other statements &  & \\
+		\midrule
+		Accept response &  & \\
+		Acknowledge and appreciate &  & \\
+		Action motivator &  & \\
+		Polite mechanism &  & \\
+		Rhetorical question &  & \\
+		Open-ended question & BC3 & \cite{JanAAAI08} \\
+		Or/or-clause question &  & \\
+		Wh-question &  & \\
+		Yes-no question &  & \\
+		Reject response &  & \\
+		Statement &  & \\
+		Uncertain response &  & \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Examples of speech act taxonomies specific to online conversation analysis}
+	\label{fig:emailTaxonomies}
+\end{table}
+
+\subsection{Speech act classification applied to forum posts}
+
+Here we explain the work of \cite{kim2010taggingandlinking}.
+
+\subsubsection{Methodology}
+
+The authors annotate both threads and posts in a corpus built from the CNET forums\footnote{http://forums.cnet.com}. Two annotators use a dedicated tool\footnote{http://mandrake.csse.unimelb.edu.au/~rbp/cgi-bin/su/Classify.py} for the annotation task. Before starting to annotate the overall data set, a pilot annotation was performed to ensure that both annotators had the same understanding of the taxonomy.
+
+\subsubsection{Taxonomy}
+
+First, they classify threads into two groups of classes: the basic group, which is futher subdivided into \textit{Solution Type} classes and \textit{Problem Source} classes, as well as a miscellaneous group. The different classes are detailed in table \ref{fig:threadClasses}. \textit{Solution Type} and \textit{Problem Source} classes can be used either separately or together, therefore there is an additional combined class set made of each combination of a \textit{Solution Type} class and a \textit{Problem Source} class (e.g. \textit{Search-OS} or \textit{Install-Network}). The combined class set being the superset of basic class sets, it was used to do the annotation.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y Y}
+		Class & Group \\
+		\toprule
+		Support & Solution Type \\
+		Documentation & Solution Type \\
+		Install & Solution Type \\
+		Search & Solution Type \\
+		\midrule
+		Hardware & Problem Source \\
+		Operating System & Problem Source \\
+		Software & Problem Source \\
+		Media & Problem Source \\
+		Network & Problem Source \\
+		Programming & Problem Source \\
+		\midrule
+		Spam & Miscellaneous \\
+		Other & Miscellaneous \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Thread classes in \cite{kim2010taggingandlinking}}
+	\label{fig:threadClasses}
+\end{table}
+
+Then, they annotate each individual post with one or several post classes. These classes are categorized into two groups, the answer group and the question group, plus three single classes. The different classes used are detailed in table \ref{fig:postClasses}.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y Y}
+		Class & Group \\
+		\toprule
+		Answer-Answer & Answer \\
+		Answer-Add & Answer \\
+		Answer-Correction & Answer \\
+		Answer-Confirmation & Answer \\
+		Answer-Objection & Answer \\
+		\midrule
+		Question-Question & Question \\
+		Question-Add & Question \\
+		Question-Correction & Question \\
+		Question-Confirmation & Question \\
+		\midrule
+		Resolution & - \\
+		Reproduction & - \\
+		Other & - \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Post classes in \cite{kim2010taggingandlinking}}
+	\label{fig:postClasses}
+\end{table}
+
+\subsubsection{Annotator agreement}
+
+The authors use Cohen's Kappa to compute annotator agreement:
+
+$$\kappa = \frac{P(a) - P(e)}{1 - P(e)}$$
+
+Where $P(a)$ refers to the relative observed agreement between two annotators, and $P(e)$ is the hypothetical probability of chance agreement between two annotators.
+
+However, as they write: "\textit{The standard Cohen’s Kappa cannot be used in multi-class annotation tasks. By the time the annotation process started, no standard methodology for calculating Cohen’s Kappa for multi-class tasks was found. Therefore, an extended method for calculating $\kappa$ value was proposed to address this problem.}"
+
+They propose an improved Cohen's Kappa for a multi-class situation, but the methodology is not applicable to our case because it takes into account the link information for each class (a concept we do not consider at all).
+
+\subsubsection{Classification}
+
+The authors use four different models for thread classification: 1 Nearest Neighbor, Naïve Bayes and Support Vector Machine. A majority class model (ZeroR) and a random model (RAND) are used as baselines. Features are weighed using four different schemes: Information Gain (IG), Term Frequency-Inverse Document Frequency (TF-IDF), raw count and simple binary. For post classification, the authors use a conventional Maximum Entropy learner\footnote{http://maxent.sourceforge.net/} as well as two structural learners : SVM-HMMs and CRFs (using \emph{CRF++}\footnote{http://crfpp.sourceforge.net/
+})
+
+Features for threads are built by using the initial post or concatenating all posts in the thread to form the "text" of the thread. They then construct different bag-of-words feature sets by tuning different parameters such as input text, pre-processing, tokenization method, and $n$-gram length. For posts, features used include lexical, structural, contextual, and semantic features..
+
+\subsubsection{Evaluation}
+
+Results for both thread classification and post classification are evaluated using micro-average precision ($P_{\mu}$), recall ($R_{\mu}$), F-score ($F_{\mu}$) and macro-averaged precision ($P_{M}$), recall ($R_{M}$) and F1-score ($F_{M}$) on a stratified\footnote{The authors make sure that \textit{"if a given post is contained in the test data for a given iteration, all other posts in that same thread are also in the test data (or more pertinently, not in the training data)"}} 10-fold cross-validation
+
+\subsection{Email segmentation}
+
+ \cite{lampert2009segmenting} attempts to segment emails into several prototypical areas, such as the contribution of the author, quotes of the original message, the signature, opening and closing formulas, etc. To do this, he uses a system based on SVM (Support Vector Machines) and reaches a precision of 87\% for a segmentation into nine distinct zones.
+
+\section{Proposal}
+
+Here we describe our finding and proposal.
+
+\subsection{Observed raw speech acts}
+
+The following categories have been empirically extracted from our corpus. This was done by two researchers through the analysis of individual messages, on a sentence by sentence basis. We postulate that a sentence can carry more than one of these labels.
+
+\begin{itemize}
+	\item opinion ("what a nightmare", "this is bullshit")
+	\item action report ("I did try apt-cache search geotiff but it didn't work")
+	\item observation ("It doesn't happen every time I move the cursor, it is completely random")
+	\item code, log, or command ("usermod - G admin 2ndroot")
+	\item meta discourse...
+		\begin{itemize}
+			\item introduction...
+				\begin{itemize}
+					\item question ("the question for this mail is...")
+					\item problem description ("here's my problem")
+					\item procedure ("do this:")
+				\end{itemize}
+			\item qualifier for previous utterance ("just a thought")
+			\item non-verbal separator ("--")
+			\item channel change ("maybe I'll file a wishlist bug for this")
+			\item automated quote introduction ("On 20/02/07, Larry wrote:")
+			\item formal mark of formatting ("[snip]")
+		\end{itemize}
+	\item question ("Should I just change them by hand?")
+	\item greetings...
+		\begin{itemize}
+			\item general ("Hi all")
+			\item targeted ("Hey Steve")
+		\end{itemize}
+	\item signoff ("see you")
+	\item signature...
+		\begin{itemize}
+			\item automatic ("Brian Lunergan Nepean, Ontario Canada")
+			\item manual ("Sean")
+		\end{itemize}
+	\item call for help ("please help!", "can anyone help me???")
+	\item thanks...
+		\begin{itemize}
+			\item by anticipation ("Thanks for any help,")
+			\item by reaction ("Thanks I'll try that!")
+		\end{itemize}
+	\item advertisement ("Novo Yahoo!")
+	\item reference...
+		\begin{itemize}
+			\item to a post
+			\item to a previously introduced item ("what does that command do exactly?")
+			\item to a channel ("Check the forums, we just discussed this subject and proceedures for both dd and rsync")
+		\end{itemize}
+	\item goal statement ("I would like to be able to send the whole package via email to acquaintances in ISO form and let them make their own DVDs")
+	\item description...
+		\begin{itemize}
+			\item of a system ("My ubuntu 1 bandwidth settings are set to -1")
+			\item of an environment ("I am using ubuntu 12.04")
+		\end{itemize}
+	\item assertion ("DD will work over the network")
+	\item solution research report ("I couldn't find anything on the forums")
+	\item constraint on the solution ("I don't want to have to do a fresh install")
+	\item preference on the solution
+	\item contact information ("mns:renato4010591@hotmail.com")
+	\item feedback on service or product
+	\item suggestion to improve a service or product
+	\item untested possible solution
+	\item rhetorical question
+	\item related comment or anecdote
+	\item personal interrogation ("I wonder how it works")
+	\item quote
+	\item answer acknowledgment...
+		\begin{itemize}
+			\item and confirmation
+			\item and rejection...
+			\begin{itemize}
+				\item because inapplicable
+				\item because unsatisfactory
+			\end{itemize}
+			\item without feedback
+		\end{itemize}
+	\item answer...
+		\begin{itemize}
+			\item from self...
+				\begin{itemize}
+					\item with explicit solution
+					\item with implicit solution
+					\item without solution
+				\end{itemize}
+			\item from identified third party...
+				\begin{itemize}
+					\item with explicit solution
+					\item with implicit solution
+					\item without solution
+				\end{itemize}
+			\item from unidentified third party...
+				\begin{itemize}
+					\item with explicit solution
+					\item with implicit solution
+					\item without solution
+				\end{itemize}
+		\end{itemize}
+	\item instruction ("Open a terminal")
+	\item thread closure
+	\item hypothesized solution
+	\item problem assimilation to another ("I had a similar problem")
+	\item question complement
+	\item question correction
+\end{itemize}
+
+\subsection{Annotation protocol}
+
+This is a proposed protocol for a future annotation task (work in progress).
+
+\begin{enumerate}
+	\item Sentences are identified (can be automated)
+	\item 
+		\begin{enumerate}
+			\item Sentences are classified into speech acts (see \ref{sec:taxonomy})
+			\item Speech acts dependencies are found
+		\end{enumerate}
+	\item 
+		\begin{enumerate}
+			\item Sentences that do not bear the same speech act as the previous one are marked as boundaries
+			\item Further boundaries are inserted when, for two consecutive sentences bearing the same speech act:
+				\begin{enumerate}
+					\item their speech acts are either Q-Q or OTHER
+					\item their speech acts are not both linked to the same sentence
+				\end{enumerate}
+		\end{enumerate}
+\end{enumerate}
+
+\subsection{Taxonomy}
+\label{sec:taxonomy}
+
+This taxonomy is a work in progress.\newline
+
+\textit{Question subclasses:} \\
+\textbf{Question-Question}: the sentence contains a new question. \\
+\textbf{Question-Add}: the sentence supplements a question by providing additional information, or asking a follow-up question. \\
+\textbf{Question-Problem}: the sentence introduces a question by stating a problem or one's motivations. \\
+\textbf{Question-Confirmation}: the sentence confirms details of the question or confirms that the same problem is being experienced by a non-initiator. \\
+\textbf{Question-Correction}: the sentence corrects errors in a question. \\
+\textbf{Question-Resolution}: the sentence confirms the question has been answered or rendered moot. \\
+
+\textit{Answer subclasses:} \\
+\textbf{Answer-Answer}: the sentence proposes an answer to a question. \\
+\textbf{Answer-Add}: the sentence supplements an answer by providing additional information. \\
+\textbf{Answer-Confirmation}: the sentence confirms details of the answer and/or that it should work. \\
+\textbf{Answer-Correction}: the sentence points out error(s) in an answer and/or corrects them. \\
+\textbf{Answer-Objection}: the sentence objects to an answer. \\
+\textbf{Answer-Acknowledgment}: the sentence acknowledges an answer without confirming or hindering it (by the question initiator only). \\
+
+\textit{Orphan classes:} \\
+\textbf{Ungrammatical}: the sentence is not grammatical (noise, punctuation, code, link, markup, ASCII art...). \\
+\textbf{Signature}: the sentence is part of the sender's signature block. \\
+\textbf{Civility}: the sentence is a polite mechanism that no other purpose. \\
+\textbf{Quote}: the sentence is quoted from a previous message
+\textbf{Other}: the sentence does not belong to any of the above classes. \\
+
+\begin{table}[H]
+	\begin{tabularx}{\textwidth}{c Y Y}
+		Class & Abbreviation & Dependency \\
+		\toprule
+		Question-Question & Q-Q & A-A (optional) \\
+		Question-Add & Q-ADD & Q-Q \\
+		Question-Problem & Q-PRO & Q-Q \\
+		Question-Confirmation & Q-CON & Q-Q \\
+		Question-Correction & Q-COR & Q-Q \\
+		Question-Resolution & Q-RES & Q-Q, A-A (optional) \\
+		\midrule
+		Answer-Answer & A-A & Q-Q \\
+		Answer-Add & A-ADD & A-A \\
+		Answer-Confirmation & A-CON & A-A \\
+		Answer-Correction & A-COR & A-A \\
+		Answer-Objection & A-OBJ & A-A \\
+		Answer-Acknowledgment & A-ACK & A-A \\
+		\midrule
+		Ungrammatical & U & - \\
+		Civility & C & - \\
+		Signature & S & - \\
+		Quote & QUO & - \\
+		Other & O & - \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Speech act taxonomy.}
+	\label{fig:taxonomy}
+\end{table}
+
+\bibliographystyle{apalike}
+\bibliography{bibliography}
+
+\end{document}
