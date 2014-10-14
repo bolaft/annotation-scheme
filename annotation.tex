@@ -205,8 +205,14 @@ The following categories have been empirically extracted from our corpus. This w
 \begin{itemize}
 	\item opinion ("what a nightmare", "this is bullshit")
 	\item action report ("I did try apt-cache search geotiff but it didn't work")
-	\item observation ("It doesn't happen every time I move the cursor, it is completely random")
+	% \item observation ("It doesn't happen every time I move the cursor, it is completely random")
 	\item code, log, or command ("usermod - G admin 2ndroot")
+	\item problem statement
+	\item problem complement
+		\begin{itemize}
+			\item observed result
+			\item explored solution % different from action report ?
+		\end{itemize}
 	\item meta discourse...
 		\begin{itemize}
 			\item introduction...
@@ -239,29 +245,28 @@ The following categories have been empirically extracted from our corpus. This w
 			\item by anticipation ("Thanks for any help,")
 			\item by reaction ("Thanks I'll try that!")
 		\end{itemize}
+	\item disclaimer ("****DISCLAIMER****" etc.)
 	\item advertisement ("Novo Yahoo!")
 	\item reference...
 		\begin{itemize}
 			\item to a post
 			\item to a previously introduced item ("what does that command do exactly?")
-			\item to a channel ("Check the forums, we just discussed this subject and proceedures for both dd and rsync")
+			\item to a channel ("Check the forums, we just discussed this subject and proceeures for both dd and rsync")
 		\end{itemize}
 	\item goal statement ("I would like to be able to send the whole package via email to acquaintances in ISO form and let them make their own DVDs")
 	\item description...
 		\begin{itemize}
 			\item of a system ("My ubuntu 1 bandwidth settings are set to -1")
 			\item of an environment ("I am using ubuntu 12.04")
+			\item of a user profile ("Coming from a Winows world, I've probably been spoiled but...")
 		\end{itemize}
 	\item assertion ("DD will work over the network")
 	\item solution research report ("I couldn't find anything on the forums")
-	\item constraint on the solution ("I don't want to have to do a fresh install")
-	\item preference on the solution
 	\item contact information ("mns:renato4010591@hotmail.com")
 	\item feedback on service or product
 	\item suggestion to improve a service or product
-	\item untested possible solution
 	\item rhetorical question
-	\item related comment or anecdote
+	\item related comment or anecdote ("Even OS X has nothing close to it, unfortunately")
 	\item personal interrogation ("I wonder how it works")
 	\item quote
 	\item answer acknowledgment...
@@ -281,27 +286,50 @@ The following categories have been empirically extracted from our corpus. This w
 					\item with explicit solution
 					\item with implicit solution
 					\item without solution
+					\item denied (no solution)
 				\end{itemize}
 			\item from identified third party...
 				\begin{itemize}
 					\item with explicit solution
 					\item with implicit solution
 					\item without solution
+					\item denied (no solution)
 				\end{itemize}
 			\item from unidentified third party...
 				\begin{itemize}
 					\item with explicit solution
 					\item with implicit solution
 					\item without solution
+					\item denied (no solution)
 				\end{itemize}
+		\end{itemize}
+	\item answer confidence communication ("I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need")
+	\item solution complement
+		\begin{itemize}
+			\item comment on solution ("I know that you don't want to hear this!")
+		\end{itemize}
+	\item untested possible solution (from author)
+		\begin{itemize}
+			\item hypothesized solution
 		\end{itemize}
 	\item instruction ("Open a terminal")
 	\item thread closure
-	\item hypothesized solution
 	\item problem assimilation to another ("I had a similar problem")
-	\item question complement
+	\item question complement...
+		\begin{itemize}
+			\item constraint on the solution ("I don't want to have to do a fresh install")
+			\item preference on the solution
+		\end{itemize}
 	\item question correction
 \end{itemize}
+
+% Ambiguité entre identification dans les texte des concepts de questions, problèmes, et solutions
+% Plusieurs étiquettes par phrase / marcher par phrasèmes
+% Distinguer DA selon la source ?
+% Tout peut être "complement", utiliser gradients
+% Concerning the problem / concerning the solution
+% Annoter le sujet ?
+% formalisation du problème ("can I do this ?")
 
 \subsection{Annotation protocol}
 
