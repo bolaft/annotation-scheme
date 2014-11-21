@@ -28,8 +28,6 @@
 
 \end{titlepage}
 
-\listoftodos
-
 \section{Introduction}
 
 Our goal is to develop an annotation scheme and protocol for the classification of email sentences or groups of sentences, which will have to be generalized to other forms of online written communication, in terms of speech acts. A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in \cite{hernandez2014exploiting}.
@@ -122,7 +120,7 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 
 \subsection{Terms and Definitions}
 
-\todo[inline]{Définir les termes importants qui seront utilisés ensuite dans le document (participents, rôles, discussions, messages...)}
+\todo[inline]{Définir les termes importants qui seront utilisés ensuite dans le document (participants, rôles, discussions, messages...)}
 
 \subsection{Bibliography}
 
@@ -352,7 +350,7 @@ Here we describe our findings and proposal.
 
 \subsection{Classes}
 
-Like \cite{qadir2011classifying}, we consider the following two top-level classes of text units: expository text (\textbf{expository}) and speech act carrying text (\textbf{speech act}). The former present factual information while the latter contain conversational units bearing communicative acts between the writer and its readers. We add a third superclass: structural information (\textbf{structure}), which will represent all the information - redacted or automatic - included to facilitate the understanding of the message or the conversation. These three classes correspond to a message's body, its important content. We sort other content - such as quoted text, automatic signatures, privacy statements etc. - in two other classes: quoted text (\textbf{quote}) and boilerplate content (\textbf{boilerplate}). These two categories' content's definitions are based on the work of \cite{lampert2009segmenting}.
+Like \cite{qadir2011classifying}, we make the distinction between expository text (\textbf{expository}) and speech act carrying text (\textbf{speech act}). The former present factual information while the latter contain conversational units bearing communicative acts between the writer and its readers. These two constitute the first two classes of the five top-level classes of our taxonomy. The third is structural information (\textbf{structure}), which will represent all the information - redacted or automatic - included to facilitate the understanding of the message or the conversation. These three classes correspond to a message's body, its important content. We sort other content - such as quoted text, automatic signatures, privacy statements etc. - in the last two classes: quoted text (\textbf{quote}) and boilerplate content (\textbf{boilerplate}). These two categories' content's definitions are based on the work of \cite{lampert2009segmenting}.
 
 The \textbf{speech act} superclass contains three main subclasses: \textbf{commissives}, \textbf{directives} and \textbf{expressives}. They are derived from the five classes defined in \cite{searle1976taxonomy} (the fourth class, "representatives", was removed because making the distinction between sentences expressing the belief or a judgment of truth and expository sentences was not very useful to us, and the fifth class, "declarations", was omitted because we assume it will almost never appear in our corpus: \cite{qadir2011classifying} found almost no example of it in their datasets).
 
