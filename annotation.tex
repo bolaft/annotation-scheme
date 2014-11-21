@@ -72,23 +72,23 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 \end{table}
 
 \begin{table}
-	\begin{tabularx}{\textwidth}{Y c c}
+	\begin{tabularx}{\textwidth}{c c c}
 		\toprule
-		Act & Corpus or kind of corpus & Reference \\
+		Act & Corpus & Reference \\
 		\midrule
 		Disclosure &  & \\
 		Edification &  & \\
 		Advisement &  & \\
-		Confirmation & multi-domain & \cite{Lampert_classifyingspeech} \\
+		Confirmation & Multi-domain & \cite{Lampert_classifyingspeech} \\
 		Question &  & \\
 		Acknowledgment &  & \\
 		Interpretation &  & \\
 		Reflection &  & \\
 		\midrule
-		Direct request
+		Direct request &  & \\
 		Question-request &  & \\
 		Open question &  & \\
-		First person commitment & corporate mail & \cite{de2013classification} \\
+		First person commitment & Corporate email & \cite{de2013classification} \\
 		First person expression of feeling &  & \\
 		First person other &  & \\
 		Other statements &  & \\
@@ -111,9 +111,80 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 	\label{fig:emailTaxonomies}
 \end{table}
 
+\subsection{Sentence classification in message board posts}
+
+Here we explain the work of \cite{qadir2011classifying}. Their research is relevant to our work because of their goal - to classify sentences as speech acts in online messages, because of their data - web forum posts, and because of their taxonomy - which is based on speech acts.
+
+\subsubsection{Goals}
+
+The authors work with message board posts. They consider that not all sentences carry a speech act. Their primary goal is to distinguish between those that do and those that don't (which they call \textit{expository sentences}). Their second goal is to classify speech act sentences into four types: \textit{commissives}, \textit{directives}, \textit{expressives} and \textit{representatives}. These four classes are derived from the work of \cite{searle1976taxonomy}. Searle's fifth type of speech acts, \textit{declarations}, was omitted because the authors found almost no examples of it in their corpus. This taxonomy is further explained in Table \ref{fig:qadirTaxonomies}.
+
+Their ultimate objective is to develop a system capable of classifying sentences in a topic-independent manner (the data they worked with was extracted from forums dealing with veterinary medicine).
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{c l}
+		\toprule
+		Class & Definition \\
+		\midrule
+		Expository Sentence & Presents or explain information to the reader \\
+		\midrule
+		Commissive & Contains a stated commitment from the author \\
+		Directive & Contains an expectation that readers will do something as a response \\
+		Expressive & Contains a statement of the author's psychological state \\
+		Representative & Commits the author to the truth of a certain proposition \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Taxonomy used in \cite{qadir2011classifying}}
+	\label{fig:qadirTaxonomies}
+\end{table}
+
+\subsubsection{Message board specificities}
+
+According to the authors, speech acts occur differently in message board posts than in spoken dialog. 
+
+They found that while the most common everyday occurrences of \textit{commissives} are promises and threats, it is not so in forum data. Most occurrences of this type of speech act correspond to confirmations that the poster will perform some action in the future. The authors also consider that declarations from the poster that they will not do something are sentences carrying such a speech act.
+
+They found that \textit{directive} speech acts are common in message board posts, in particular under the form of a question or a request for assistance or advice. They attempt to weed out rhetorical questions from sentences classified as \textit{directives}.
+
+The authors found that typical examples of \textit{expressive} speech acts occur when a poster thanks, welcomes or apologizes to a reader. They found this class to be very common in message board posts.
+
+\textit{Representative} speech acts were uncommon in the corpus they used. They chose to ignore most sentences stated as fact even though they might correspond to Searle's definition of a representative speech act and and label them as \textit{expository sentences} instead. They considered that sentences belonged in that class only when a doctor explicitly presented an opinion or hypothesis as their own (such as sentences starting with "I suspect that...").
+
+\subsubsection{Classification}
+
+The authors chose to approach the problem as a supervised classification task. Instead of a single classifier, they chose to train four different binary models, one for each class, and run them against the data. Therefore a single sentence can contain several speech acts. A preliminary classifier was trained just to filter out sentences containing no speech act (\textit{expository sentences}).
+
+They use a number of different feature sets for the classification task. First, they consider lexical and syntactic features. Such features include: unigrams, personal pronouns, tense, modals, plan phrases, punctuation, sentence position, number of verbs, and others. Second, they consider speech act word clues. In \cite{searle1976taxonomy}, the author listed a number words that he considered to be indicative of speech acts. Here, the authors chose to discard a few that they considered too general and added new ones, such as a list of speech act verbs originally published by \cite{wierzbicka1987english}. Their system recognize all derivations of these word clues.
+
+The classifiers used were Support Vector Machines (SVMs).
+
+\subsubsection{Evaluation}
+
+The data set used was constituted of 15,383 message board posts from the Veterinary Information Network (VIN)\footnote{www.vin.com}. These posts covered three topics: cardiology, endocrinology, and feline internal medicine. The preprocessing included number tokenization, the removing of html tags and "basic cleaning" (???). Experiments were performed on a random sample of 150 threads from the collection. These threads contained 1,956 sentences (13.04 sentences per post).
+
+The gold standard was built from the manual annotation of message posts by two human annotators provided with detailed annotation guidelines. A sample of 50 posts was independently annotated by them in order to calculate the annotator agreement. However, the authors ran into the same problem \cite{kim2010taggingandlinking} did, that is the fact that the standard Cohen's Kappa is not applicable to multi-class annotation tasks. Since they found only a small number of sentences classified as containing several speech acts, these were discarded and the kappa was calculated for the rest. The result was a score of .95, an extremely high agreement. However the "no speech act" class was by far the most predominant (70\%), so the kappa score does not necessarily mean that annotators mostly agreed on speech act classification decisions. The authors therefore computed the kappa for each speech act class and found an average score of 87.25\%, which is still very high. Table \ref{fig:qadirRepartition} shows the repartition of speech acts in their dataset.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y Y}
+		\toprule
+		Class & Proportion \\
+		\midrule
+		None & 71.42\% \\
+		Directive & 15.90\% \\
+		Expressive & 9.92\% \\
+		Representative & 2.91\% \\
+		Commissive & 2.61\% \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Repartition of speech acts in \cite{qadir2011classifying} test data}
+	\label{fig:qadirRepartition}
+\end{table}
+
+The first classifier, the one filtering out sentences containing no speech act, recognized 83\% of the speech act sentences with 86\% precision, and 95\% of the expository  sentences with 93\% precision. As for the speech act categorization task, the authors performed many experiments with a number of different feature combinations, for each speech act category. The authors found that many syntactic and lexical features had little impact on the classification results. Detailed results will not be presented here, but overall results were good for the identification of directive and expressive speech act sentences, less so for representative and commissive speech acts, which proved more difficult to detect.
+
 \subsection{Speech act classification applied to forum posts}
 
-Here we explain the work of \cite{kim2010taggingandlinking}.
+Here we explain the work of \cite{kim2010taggingandlinking}. Their research is relevant to our work because of their goal (to link and classify messages) and their corpus (email messages). Their taxonomy, however, is not based on dialog acts.
 
 \subsubsection{Methodology}
 
@@ -196,80 +267,9 @@ Features for threads are built by using the initial post or concatenating all po
 
 Results for both thread classification and post classification are evaluated using micro-average precision ($P_{\mu}$), recall ($R_{\mu}$), F-score ($F_{\mu}$) and macro-averaged precision ($P_{M}$), recall ($R_{M}$) and F1-score ($F_{M}$) on a stratified\footnote{The authors make sure that \textit{"if a given post is contained in the test data for a given iteration, all other posts in that same thread are also in the test data (or more pertinently, not in the training data)"}} 10-fold cross-validation.
 
-\subsection{Sentence classification in message board posts}
-
-Here we explain the work of \cite{qadir2011classifying}.
-
-\subsubsection{Goals}
-
-The authors work with message board posts. They consider that not all sentences carry a speech act. Their primary goal is to distinguish between those that do and those that don't (which they call \textit{expository sentences}). Their second goal is to classify speech act sentences into four types: \textit{commissives}, \textit{directives}, \textit{expressives} and \textit{representatives}. These four classes are derived from the work of \cite{searle1976taxonomy}. Searle's fifth type of speech acts, \textit{declarations}, was omitted because the authors found almost no examples of it in their corpus. This taxonomy is further explained in Table \ref{fig:qadirTaxonomies}.
-
-Their ultimate objective is to develop a system capable of classifying sentences in a topic-independent manner (the data they worked with was extracted from forums dealing with veterinary medicine).
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{c l}
-		\toprule
-		Class & Definition \\
-		\midrule
-		Expository Sentence & Presents or explain information to the reader \\
-		\midrule
-		Commissive & Contains a stated commitment from the author \\
-		Directive & Contains an expectation that readers will do something as a response \\
-		Expressive & Contains a statement of the author's psychological state \\
-		Representative & Commits the author to the truth of a certain proposition \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Taxonomy used in \cite{qadir2011classifying}}
-	\label{fig:qadirTaxonomies}
-\end{table}
-
-\subsubsection{Message board specificities}
-
-According to the authors, speech acts occur differently in message board posts than in spoken dialog. 
-
-They found that while the most common everyday occurrences of \textit{commissives} are promises and threats, it is not so in forum data. Most occurrences of this type of speech act correspond to confirmations that the poster will perform some action in the future. The authors also consider that declarations from the poster that they will not do something are sentences carrying such a speech act.
-
-They found that \textit{directive} speech acts are common in message board posts, in particular under the form of a question or a request for assistance or advice. They attempt to weed out rhetorical questions from sentences classified as \textit{directives}.
-
-The authors found that typical examples of \textit{expressive} speech acts occur when a poster thanks, welcomes or apologizes to a reader. They found this class to be very common in message board posts.
-
-\textit{Representative} speech acts were uncommon in the corpus they used. They chose to ignore most sentences stated as fact even though they might correspond to Searle's definition of a representative speech act and and label them as \textit{expository sentences} instead. They considered that sentences belonged in that class only when a doctor explicitly presented an opinion or hypothesis as their own (such as sentences starting with "I suspect that...").
-
-\subsubsection{Classification}
-
-The authors chose to approach the problem as a supervised classification task. Instead of a single classifier, they chose to train four different binary models, one for each class, and run them against the data. Therefore a single sentence can contain several speech acts. A preliminary classifier was trained just to filter out sentences containing no speech act (\textit{expository sentences}).
-
-They use a number of different feature sets for the classification task. First, they consider lexical and syntactic features. Such features include: unigrams, personal pronouns, tense, modals, plan phrases, punctuation, sentence position, number of verbs, and others. Second, they consider speech act word clues. In \cite{searle1976taxonomy}, the author listed a number words that he considered to be indicative of speech acts. Here, the authors chose to discard a few that they considered too general and added new ones, such as a list of speech act verbs originally published by \cite{wierzbicka1987english}. Their system recognize all derivations of these word clues.
-
-The classifiers used were Support Vector Machines (SVMs).
-
-\subsubsection{Evaluation}
-
-The data set used was constituted of 15,383 message board posts from the Veterinary Information Network (VIN)\footnote{www.vin.com}. These posts covered three topics: cardiology, endocrinology, and feline internal medicine. The preprocessing included number tokenization, the removing of html tags and "basic cleaning" (???). Experiments were performed on a random sample of 150 threads from the collection. These threads contained 1,956 sentences (13.04 sentences per post).
-
-The gold standard was built from the manual annotation of message posts by two human annotators provided with detailed annotation guidelines. A sample of 50 posts was independently annotated by them in order to calculate the annotator agreement. However, the authors ran into the same problem \cite{kim2010taggingandlinking} did, that is the fact that the standard Cohen's Kappa is not applicable to multi-class annotation tasks. Since they found only a small number of sentences classified as containing several speech acts, these were discarded and the kappa was calculated for the rest. The result was a score of .95, an extremely high agreement. However the "no speech act" class was by far the most predominant (70\%), so the kappa score does not necessarily mean that annotators mostly agreed on speech act classification decisions. The authors therefore computed the kappa for each speech act class and found an average score of 87.25\%, which is still very high. Table \ref{fig:qadirRepartition} shows the repartition of speech acts in their dataset.
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{Y Y}
-		\toprule
-		Class & Proportion \\
-		\midrule
-		None & 71.42\% \\
-		Directive & 15.90\% \\
-		Expressive & 9.92\% \\
-		Representative & 2.91\% \\
-		Commissive & 2.61\% \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Repartition of speech acts in \cite{qadir2011classifying} test data}
-	\label{fig:qadirRepartition}
-\end{table}
-
-The first classifier, the one filtering out sentences containing no speech act, recognized 83\% of the speech act sentences with 86\% precision, and 95\% of the expository  sentences with 93\% precision. As for the speech act categorization task, the authors performed many experiments with a number of different feature combinations, for each speech act category. The authors found that many syntactic and lexical features had little impact on the classification results. Detailed results will not be presented here, but overall results were good for the identification of directive and expressive speech act sentences, less so for representative and commissive speech acts, which proved more difficult to detect.
-
 \subsection{Segmentation of email message text}
 
-Here we explain the work of \cite{lampert2009segmenting}.
+Here we explain the work of \cite{lampert2009segmenting}. It is relevant to our work because of their goal, which is to classify sentences or text fragments as belonging to such or such message zone, and because of the kind of data they work with: email messages.
 
 \subsubsection{Goals}
 
