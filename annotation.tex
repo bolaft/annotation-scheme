@@ -9,6 +9,7 @@
 % \usepackage[T1]{fontenc}
 \usepackage{tabularx, booktabs}
 \usepackage{float}
+\usepackage[textwidth=4cm]{todonotes}
 
 \restylefloat{figure}
 \restylefloat{table[H]}
@@ -27,15 +28,19 @@
 
 \end{titlepage}
 
+\listoftodos
+
 \section{Introduction}
 
 Our goal is to develop an annotation scheme and protocol for the classification of email sentences or groups of sentences, which will have to be generalized to other forms of online written communication, in terms of speech acts. A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in \cite{hernandez2014exploiting}.
 
-\section{Background and Related Work}
+\todo{Plus de détails sur les objectifs dans l'introduction}
+
+\section{Background and Bibliography}
 
 In this section we introduce the concept of dialog act (DA) and provide details concerning a few works related to the field of speech act recognition and email segmentation.
 
-\subsection{Background}
+\subsection{Speech Acts}
 
 Speech act theory \cite{austin1975things} attempts to describe utterances in terms of communicative function (e.g. question, answer, thanks...). Indeed, utterances are not limited to their semantic content, they also have a communicative function : a goal, and an effect. For Austin, they can be analyzed at three levels: locutory (the linguistic characteristics of the utterance), illocutory (the intention of the speaker) and perlocutory (the real-world effects of the utterance). When we refer to speech acts\footnote{Also known as dialog acts}, we are interested in the illocutory level of utterance analysis. 
 
@@ -43,17 +48,17 @@ Thus, in most works, it is in terms of speech acts that interactions between par
 
 There are a number of different speech act taxonomies \cite{traum200020}. Two of them can be considered foundational: first Austin's and then Searle's. Both contain five classes of speech acts, that can be defined as such:
 
-\textbf{TODO réécrire définitions (en l'état copié/collé Wikipédia)}
+\todo{Réécrire définitions (en l'état copié/collé Wikipédia)}
 
 \begin{itemize}
-	\item Assertives: speech acts that commit a speaker to the truth of the expressed proposition, e.g. reciting a creed
-	\item Directives: speech acts that are to cause the hearer to take a particular action, e.g. requests, commands and advice
-	\item Commissives: speech acts that commit a speaker to some future action, e.g. promises and oaths
-	\item Expressives: speech acts that express the speaker's attitudes and emotions towards the proposition, e.g. \item Congratulations:excuses and thanks
-	\item Declaratives: speech acts that change the reality in accord with the proposition of the declaration, e.g. baptisms, pronouncing someone guilty or pronouncing someone husband and wife
+	\item Assertives: speech acts that commit a speaker to the truth of the expressed proposition, e.g. reciting a creed.
+	\item Directives: speech acts that are to cause the hearer to take a particular action, e.g. requests, commands and advice.
+	\item Commissives: speech acts that commit a speaker to some future action, e.g. promises and oaths.
+	\item Expressives: speech acts that express the speaker's attitudes and emotions towards the proposition, e.g. congratulations, excuses and thanks.
+	\item Declaratives: speech acts that change the reality in accord with the proposition of the declaration, e.g. baptisms, pronouncing someone guilty or pronouncing someone husband and wife.
 \end{itemize}
 
-Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomies. Table \ref{fig:emailTaxonomies} presents a few more recent taxonomies specifically used in the context of online conversation analysis.
+Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomies. \todo{Table 2 à enrichir} Table \ref{fig:emailTaxonomies} presents a few more recent taxonomies specifically used in the context of online conversation analysis.
 
 \begin{table}
 	\begin{tabularx}{\textwidth}{c c c}
@@ -111,13 +116,27 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 	\label{fig:emailTaxonomies}
 \end{table}
 
-\subsection{Sentence classification in message board posts}
+\subsection{Verbal Response Modes}
+
+\todo[inline]{Ajouter quelques paragraphes sur les VRM}
+
+\subsection{Terms and Definitions}
+
+\todo[inline]{Définir les termes importants qui seront utilisés ensuite dans le document (participents, rôles, discussions, messages...)}
+
+\subsection{Bibliography}
+
+\todo[inline]{Ajouter un paragraphe introductif + tableau qui restitue les différents travaux entre eux (par domaine, corpus, schéma, tâche, approche...)}
+
+\subsubsection{Sentence classification in message board posts}
 
 Here we explain the work of \cite{qadir2011classifying}. Their research is relevant to our work because of their goal - to classify sentences as speech acts in online messages, because of their data - web forum posts, and because of their taxonomy - which is based on speech acts.
 
-\subsubsection{Goals}
+\vspace{0.5cm}
+\textbf{Goals:}
+\vspace{0.1cm}
 
-The authors work with message board posts. They consider that not all sentences carry a speech act. Their primary goal is to distinguish between those that do and those that don't (which they call \textit{expository sentences}). Their second goal is to classify speech act sentences into four types: \textit{commissives}, \textit{directives}, \textit{expressives} and \textit{representatives}. These four classes are derived from the work of \cite{searle1976taxonomy}. Searle's fifth type of speech acts, \textit{declarations}, was omitted because the authors found almost no examples of it in their corpus. This taxonomy is further explained in Table \ref{fig:qadirTaxonomies}.
+The authors work with message board posts. They consider that not all sentences carry a speech act. Their primary goal is to distinguish between those that do and those that don't (which they call \todo{Mieux définir "expository", positionner le terme par rapport aux expositives d'Austin et les assertives de Searle}\textit{expository sentences}). Their second goal is to classify speech act sentences into four types: \textit{commissives}, \textit{directives}, \textit{expressives} and \textit{representatives}. These four classes are derived from the work of \cite{searle1976taxonomy}. Searle's fifth type of speech acts, \textit{declarations}, was omitted because the authors found almost no examples of it in their corpus. \todo{Expliquer dans le texte pas dans une table} This taxonomy is further explained in Table \ref{fig:qadirTaxonomies}.
 
 Their ultimate objective is to develop a system capable of classifying sentences in a topic-independent manner (the data they worked with was extracted from forums dealing with veterinary medicine).
 
@@ -138,19 +157,23 @@ Their ultimate objective is to develop a system capable of classifying sentences
 	\label{fig:qadirTaxonomies}
 \end{table}
 
-\subsubsection{Message board specificities}
+\vspace{0.5cm}
+\textbf{Message board specificities:}
+\vspace{0.1cm}
 
 According to the authors, speech acts occur differently in message board posts than in spoken dialog. 
 
-They found that while the most common everyday occurrences of \textit{commissives} are promises and threats, it is not so in forum data. Most occurrences of this type of speech act correspond to confirmations that the poster will perform some action in the future. The authors also consider that declarations from the poster that they will not do something are sentences carrying such a speech act.
+They found that while the most common everyday occurrences of \textit{commissives} are promises and threats, it is not so in forum data. Most occurrences of this type of speech act correspond to confirmations that the participant will perform some action in the future. The authors also consider that declarations from the participant that they will not do something are sentences carrying such a speech act.
 
 They found that \textit{directive} speech acts are common in message board posts, in particular under the form of a question or a request for assistance or advice. They attempt to weed out rhetorical questions from sentences classified as \textit{directives}.
 
-The authors found that typical examples of \textit{expressive} speech acts occur when a poster thanks, welcomes or apologizes to a reader. They found this class to be very common in message board posts.
+The authors found that typical examples of \textit{expressive} speech acts occur when a participant thanks, welcomes or apologizes to a reader. They found this class to be very common in message board posts.
 
 \textit{Representative} speech acts were uncommon in the corpus they used. They chose to ignore most sentences stated as fact even though they might correspond to Searle's definition of a representative speech act and and label them as \textit{expository sentences} instead. They considered that sentences belonged in that class only when a doctor explicitly presented an opinion or hypothesis as their own (such as sentences starting with "I suspect that...").
 
-\subsubsection{Classification}
+\vspace{0.5cm}
+\textbf{Classification:}
+\vspace{0.1cm}
 
 The authors chose to approach the problem as a supervised classification task. Instead of a single classifier, they chose to train four different binary models, one for each class, and run them against the data. Therefore a single sentence can contain several speech acts. A preliminary classifier was trained just to filter out sentences containing no speech act (\textit{expository sentences}).
 
@@ -158,7 +181,9 @@ They use a number of different feature sets for the classification task. First, 
 
 The classifiers used were Support Vector Machines (SVMs).
 
-\subsubsection{Evaluation}
+\vspace{0.5cm}
+\textbf{Evaluation:}
+\vspace{0.1cm}
 
 The data set used was constituted of 15,383 message board posts from the Veterinary Information Network (VIN)\footnote{www.vin.com}. These posts covered three topics: cardiology, endocrinology, and feline internal medicine. The preprocessing included number tokenization, the removing of html tags and "basic cleaning" (???). Experiments were performed on a random sample of 150 threads from the collection. These threads contained 1,956 sentences (13.04 sentences per post).
 
@@ -182,15 +207,19 @@ The gold standard was built from the manual annotation of message posts by two h
 
 The first classifier, the one filtering out sentences containing no speech act, recognized 83\% of the speech act sentences with 86\% precision, and 95\% of the expository  sentences with 93\% precision. As for the speech act categorization task, the authors performed many experiments with a number of different feature combinations, for each speech act category. The authors found that many syntactic and lexical features had little impact on the classification results. Detailed results will not be presented here, but overall results were good for the identification of directive and expressive speech act sentences, less so for representative and commissive speech acts, which proved more difficult to detect.
 
-\subsection{Speech act classification applied to forum posts}
+\subsubsection{Speech act classification applied to forum posts}
 
 Here we explain the work of \cite{kim2010taggingandlinking}. Their research is relevant to our work because of their goal (to link and classify messages) and their corpus (email messages). Their taxonomy, however, is not based on dialog acts.
 
-\subsubsection{Methodology}
+\vspace{0.5cm}
+\textbf{Methodology:}
+\vspace{0.1cm}
 
 The authors annotate both threads and posts in a corpus built from the CNET forums\footnote{http://forums.cnet.com}. Two annotators use a dedicated tool\footnote{http://mandrake.csse.unimelb.edu.au/~rbp/cgi-bin/su/Classify.py} for the annotation task. Before starting to annotate the overall data set, a pilot annotation was performed to ensure that both annotators had the same understanding of the taxonomy.
 
-\subsubsection{Taxonomy}
+\vspace{0.5cm}
+\textbf{Taxonomy:}
+\vspace{0.1cm}
 
 First, they classify threads into two groups of classes: the basic group, which is further subdivided into \textit{Solution Type} classes and \textit{Problem Source} classes, as well as a miscellaneous group. The different classes are detailed in table \ref{fig:threadClasses}. \textit{Solution Type} and \textit{Problem Source} classes can be used either separately or together, therefore there is an additional combined class set made of each combination of a \textit{Solution Type} class and a \textit{Problem Source} class (e.g. \textit{Search-OS} or \textit{Install-Network}). The combined class set being the superset of basic class sets, it was used to do the annotation.
 
@@ -244,7 +273,9 @@ Then, they annotate each individual post with one or several post classes. These
 	\label{fig:postClasses}
 \end{table}
 
-\subsubsection{Annotator agreement}
+\vspace{0.5cm}
+\textbf{Annotator agreement:}
+\vspace{0.1cm}
 
 The authors use Cohen's Kappa to compute annotator agreement:
 
@@ -256,26 +287,34 @@ However, as they write: "\textit{The standard Cohen’s Kappa cannot be used in 
 
 They propose an improved Cohen's Kappa for a multi-class situation, but the methodology is not applicable to our case because it takes into account the link information for each class (a concept we do not consider at all).
 
-\subsubsection{Classification}
+\vspace{0.5cm}
+\textbf{Classification:}
+\vspace{0.1cm}
 
 The authors use four different models for thread classification: 1 Nearest Neighbor, Naïve Bayes and Support Vector Machine. A majority class model (ZeroR) and a random model (RAND) are used as baselines. Features are weighed using four different schemes: Information Gain (IG), Term Frequency-Inverse Document Frequency (TF-IDF), raw count and simple binary. For post classification, the authors use a conventional Maximum Entropy learner\footnote{http://maxent.sourceforge.net/} as well as two structural learners : SVM-HMMs and CRFs (using \emph{CRF++}\footnote{http://crfpp.sourceforge.net/
 })
 
 Features for threads are built by using the initial post or concatenating all posts in the thread to form the "text" of the thread. They then construct different bag-of-words feature sets by tuning different parameters such as input text, pre-processing, tokenization method, and $n$-gram length. For posts, features used include lexical, structural, contextual, and semantic features.
 
-\subsubsection{Evaluation}
+\vspace{0.5cm}
+\textbf{Evaluation:}
+\vspace{0.1cm}
 
 Results for both thread classification and post classification are evaluated using micro-average precision ($P_{\mu}$), recall ($R_{\mu}$), F-score ($F_{\mu}$) and macro-averaged precision ($P_{M}$), recall ($R_{M}$) and F1-score ($F_{M}$) on a stratified\footnote{The authors make sure that \textit{"if a given post is contained in the test data for a given iteration, all other posts in that same thread are also in the test data (or more pertinently, not in the training data)"}} 10-fold cross-validation.
 
-\subsection{Segmentation of email message text}
+\subsubsection{Segmentation of email message text}
 
 Here we explain the work of \cite{lampert2009segmenting}. It is relevant to our work because of their goal, which is to classify sentences or text fragments as belonging to such or such message zone, and because of the kind of data they work with: email messages.
 
-\subsubsection{Goals}
+\vspace{0.5cm}
+\textbf{Goals:}
+\vspace{0.1cm}
 
 The authors attempt to segment emails into several prototypical areas, called \textit{email zones}. They call their system "Zebra".
 
-\subsubsection{Email zones}
+\vspace{0.5cm}
+\textbf{Email zones:}
+\vspace{0.1cm}
 
 There are three superclasses containing nine different classes of email zones.
 
@@ -285,7 +324,9 @@ There are three superclasses containing nine different classes of email zones.
 
 \textit{Boilerplate zones} contain reusable message content, typically automatically appended to a message. Subclasses include: \textit{signature} (contact information automatically appended at the end of a message), \textit{advertising} (advertising material, typically found at the end of the message), \textit{disclaimer} (legal disclaimers and privacy statements), and \textit{attachment} (automated text indicating attached documents).
 
-\subsubsection{Classification}
+\vspace{0.5cm}
+\textbf{Classification:}
+\vspace{0.1cm}
 
 The authors consider that each line of text in the body of a message belongs to one of these \textit{email zones}. The authors tried two approaches: in the first one, a classifier segments a message into zone fragments and then attempts to classify the resulting fragments. In the second approach, the classifier simply works on a line-by-line basis.
 
@@ -293,7 +334,9 @@ In the first approach, the fragment-based one, the message is segmented based on
 
 The classifier is based on SVMs (Support Vector Machines) and uses graphic, orthographic and lexical features to categorize lines and text fragments.
 
-\subsubsection{Evaluation}
+\vspace{0.5cm}
+\textbf{Evaluation:}
+\vspace{0.1cm}
 
 The training data for their classifier consists of almost 400 messages from the Enron email corpus \cite{klimt2004enron}. To build the gold standard, the authors chose to use only a single annotator since they believe the task to be relatively uncontroversial. Each line - blank lines excepted - was marked by the annotator as belonging to one of the nine zones. They used the resulting 7,922 annotated lines (out of 11,881) as training data for their classifier.
 
