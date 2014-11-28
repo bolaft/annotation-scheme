@@ -56,7 +56,7 @@ There are a number of different speech act taxonomies \cite{traum200020}. Two of
 	\item Declaratives: speech acts that change the reality in accord with the proposition of the declaration, e.g. baptisms, pronouncing someone guilty or pronouncing someone husband and wife.
 \end{itemize}
 
-Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomies. \todo{Table 2 à enrichir} Table \ref{fig:emailTaxonomies} presents a few more recent taxonomies specifically used in the context of online conversation analysis.
+Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomies. Table \ref{fig:emailTaxonomies} presents a few more recent taxonomies specifically used in the context of online conversation analysis.
 
 \begin{table}
 	\begin{tabularx}{\textwidth}{c c c}
@@ -110,6 +110,7 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 		Uncertain response &  & \\
 		\bottomrule
 	\end{tabularx}
+	\todo[inline]{À enrichir}
 	\caption{Examples of speech act taxonomies specific to online conversation analysis}
 	\label{fig:emailTaxonomies}
 \end{table}
@@ -348,19 +349,58 @@ Concerning zone classification, interestingly, the line-based approach outperfor
 
 Here we describe our findings and proposal.
 
-\subsection{Classes}
+\subsection{Discourse Classes}
 
-Like \cite{qadir2011classifying}, we make the distinction between expository text (\textbf{expository}) and speech act carrying text (\textbf{speech act}). The former present factual information while the latter contain conversational units bearing communicative acts between the writer and its readers. These two constitute the first two classes of the five top-level classes of our taxonomy. The third is structural information (\textbf{structure}), which will represent all the information - redacted or automatic - included to facilitate the understanding of the message or the conversation. These three classes correspond to a message's body, its important content. We sort other content - such as quoted text, automatic signatures, privacy statements etc. - in the last two classes: quoted text (\textbf{quote}) and boilerplate content (\textbf{boilerplate}). These two categories' content's definitions are based on the work of \cite{lampert2009segmenting}.
+\textbf{New Content}
+\begin{itemize}
+	\item Speech Acts (see subsection \ref{subsec:speech_act_classes} for details)
+	\item Structure
+		\begin{itemize}
+			\item Metadiscourse: sentences that comments on surrounding text
+				\begin{itemize}
+					\item Utterance introduction: sentences that introduces an upcoming sentence
+						\begin{itemize}
+							\item Question introduction: sentence that introduces a question (e.g. \textit{"the question f this mail is..."})
+							\item Problem introduction: sentence that introduces a problem description (e.g. \textit{"here's my problem"})
+							\item Instructions introduction: sentence that introduces a series of instructions (e.g. \textit{"do this:", "Then release them and press the F2 key."})
+							\item Quote introduction: sentence that introduces a quote - may be automatic (e.g. \textit{"On 20/02/07, Larry wrote:"})
+						\end{itemize}
+					\item Utterance qualifier: sentences that qualify a previous sentence (e.g. \textit{"just a thought"})
+				\end{itemize}
+			\item Structure marks: non-sentences bearing structural information
+				\begin{itemize}
+					\item Non-verbal separator: non-linguistic character sequence separating two parts of a message (e.g. \textit{"--"})
+					\item Heading: title announcing a new section of the message (e.g. \textit{"****DISCLAIMER****"})
+				\end{itemize}
+			\item Reference: sentences that mention or allude to something else
+				\begin{itemize}
+					\item post reference: the author references to another post in the thread (e.g. \textit{"Earlier Dago said that..."})
+					\item item reference: the author references to a previously introduced item (e.g. \textit{"what does that command do exactly?"})
+					\item channel reference: the author references to another communication channel (e.g. \textit{"Check the forums, we just discussed this subject and procedures for both dd and rsync"})
+				\end{itemize}
+			\item Conversational information: information on the conversation's flow
+				\begin{itemize}
+					\item Answer acknowledgment: the author confirms the good reception and understanding of an answer (e.g. \textit{"OK."})
+						\begin{itemize}
+							\item Answer confirmation: the sentence confirms that a proposed solution worked (e.g. \textit{"Perfect!!"})
+							\item Answer rejection: the sentence rejects an answer because the solution is inapplicable or didn't work (e.g. \textit{"Thanks. But the CD still doesn't work"})
+						\end{itemize}
+					\item Thread closure: the sentence announces that the conversation is over or that the problem was resolved or cannot be resolved
+				\end{itemize}
+			\item Edition artifact: formal element showing the message has been modified, by the author or a moderator for example (e.g. \textit{"[snip]"})
+			\item Hyperlink: hypertext link pointing toward another document (e.g. \textit{"https://lists.ubuntu.com/mailman/listinfo/ubuntu-users"})
+		\end{itemize}
+\end{itemize}
 
-The \textbf{speech act} superclass contains three main subclasses: \textbf{commissives}, \textbf{directives} and \textbf{expressives}. They are derived from the five classes defined in \cite{searle1976taxonomy} (the fourth class, "representatives", was removed because making the distinction between sentences expressing the belief or a judgment of truth and expository sentences was not very useful to us, and the fifth class, "declarations", was omitted because we assume it will almost never appear in our corpus: \cite{qadir2011classifying} found almost no example of it in their datasets).
+\textbf{Quote}
 
-All these classes themselves contain a multitude of labels, all of which will be presented details in the following subsections of this document. We postulate that a sentence can carry several labels.
+\begin{itemize}
+	\item Replied text: content quoted from a previous message in the thread
+	\item Forwarded text: content from a message outside the current conversation that has been forwarded by the current message (email only)
+	\item Quotation: quote from an outside source, such as a monologue document, a book, or a retranscription of famous spoken words
+\end{itemize}
 
-The following labels have been empirically extracted from our corpus. This was done by two researchers through the analysis of individual messages, on a sentence by sentence basis.
-
-\subsubsection{Boilerplate}
-
-Boilerplate text is non-content text found around the message's body, typically reused without modification across multiple messages.
+\textbf{Boilerplate}
 
 \begin{itemize}
 	\item Signature: the message author's identity
@@ -373,17 +413,10 @@ Boilerplate text is non-content text found around the message's body, typically 
 	\item Contact: the author's contact information (e.g. \textit{"mns:renato4010591@hotmail.com"})
 \end{itemize}
 
-\subsubsection{Quote}
+\subsection{Speech Act Classes}
+\label{subsec:speech_act_classes}
 
-Quoted text include both content quoted in reply to previous messages in the same conversation thread and forwarded content from other conversations.
-
-\begin{itemize}
-	\item Repled text: content quoted from a previous message in the thread
-	\item Forwarded text: content from a message outside the current conversation that has been forwarded by the current message (email only)
-	\item Quote: quote from an outside source, such as a monologue document, a book, or a retranscription of famous spoken words
-\end{itemize}
-
-\subsubsection{Expository}
+\textbf{Representatives}
 
 \begin{itemize}
 	\item Subjective report: account of something the author has observed, heard, done, or investigated
@@ -423,212 +456,90 @@ Quoted text include both content quoted in reply to previous messages in the sam
 	\item Correction: rectification of an alleged error or inaccuracy
 \end{itemize}
 
-\subsubsection{Speech}
+\textbf{Commissives}
 
 \begin{itemize}
-	\item Commissives: sentences containing a stated commitment from the author
-		\begin{itemize}
-			\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search..."})
-			\item Channel change: announcement that the author is going to switch or fork the discussion to a different communication channel (e.g. \textit{"I'll file a wishlist bug for this"})
-		\end{itemize}
-	\item Directives: sentences containing an expectation that readers will do something as a response
-		\begin{itemize}
-			\item Question: a sentence worded or expressed so as to explicitly elicit information (e.g. \textit{"Should I just change them by hand?", "Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
-				\item Clarification request: request for more specific information or confirmation that the author has correctly understood an utterance (e.g. \textit{"do you mean the starterbar from gdesklets?", "Which exact packages are you getting an error from?"})
-			\item Request for assistance: call for help (e.g. \textit{"please help!", "can anyone help me???", "i could use some help"})
-			\item Suggestion: an idea submitted for consideration
-			\item Instruction: information telling how something should be done (e.g. \textit{"Open a terminal"})
-		\end{itemize}
-	\item Expressives: sentences containing a statement of the author's psychological state
-		\begin{itemize}
-			\item Greeting: polite words of salutation
-				\begin{itemize}
-					\item General greeting: greeting directed to no one in particular (e.g. \textit{"Hi all", "Hello all"})
-					\item Targeted greeting: greeting directed at a specific participant or group of participants (e.g. \textit{"Hey Steve"})
-				\end{itemize}
-			\item Signoff: the conclusion of a message (e.g. \textit{"see you", "-best - greg"})
-			\item Thanks: an expression of gratitude
-				\begin{itemize}
-					\item Thanks in advance: an expression of anticipated gratitude (e.g. \textit{"Thanks for any help,"})
-					\item Thanks in reaction: an expression of gratitude for some specific assistance (e.g. \textit{"Thanks I'll try that!"})
-				\end{itemize}
-			\item Opinion: expression of a subjective judgment on a thing or situation (e.g. \textit{"what a nightmare", "this is bullshit", "this OS sucks"})
-				\begin{itemize}
-					\item Feedback: specific type of constructive opinion destined to be used as a basis for the improvement of a product or service
-				\end{itemize}
-			\item False question: question whose function is not to elicit an answer
-				\begin{itemize}
-					\item Rhetorical question: question asked in order to make a point (e.g. \textit{"Are you seriously implying that he should reinstall Ubuntu because of a cosmetic issue?", "Wow, CRTs to store data?"})
-					\item Personal interrogation: question asked in order to express a sentiment (e.g. \textit{"I wonder how it works?", "Come on, how hard can this be?"})
-				\end{itemize}
-			\item Expression of solution confidence: expression of the author's level of confidence in a proposed solution (e.g. \textit{"I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need"})
-			\item Expression of solution preference: expression of the author's preferences (to varying degree) towards a specific type of solution
-		\end{itemize}
+	\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search..."})
+	\item Channel change: announcement that the author is going to switch or fork the discussion to a different communication channel (e.g. \textit{"I'll file a wishlist bug for this"})
 \end{itemize}
 
-\subsubsection{Structure}
-
-Structural informations are contained in sentences whose purpose is to explain what a message or sentence is and what is its role in the conversation.
+\textbf{Directives}
 
 \begin{itemize}
-	\item Metadiscourse: sentences that comments on surrounding text
-		\begin{itemize}
-			\item Utterance introduction: sentences that introduces an upcoming sentence
-				\begin{itemize}
-					\item Question introduction: sentence that introduces a question (e.g. \textit{"the question f this mail is..."})
-					\item Problem introduction: sentence that introduces a problem description (e.g. \textit{"here's my problem"})
-					\item Instructions introduction: sentence that introduces a series of instructions (e.g. \textit{"do this:", "Then release them and press the F2 key."})
-					\item Quote introduction: sentence that introduces a quote - may be automatic (e.g. \textit{"On 20/02/07, Larry wrote:"})
-				\end{itemize}
-			\item Utterance qualifier: sentences that qualify a previous sentence (e.g. \textit{"just a thought"})
-		\end{itemize}
-	\item Structure marks: non-sentences bearing structural information
-		\begin{itemize}
-			\item Non-verbal separator: non-linguistic character sequence separating two parts of a message (e.g. \textit{"--"})
-			\item Heading: title announcing a new section of the message (e.g. \textit{"****DISCLAIMER****"})
-		\end{itemize}
-	\item Reference: sentences that mention or allude to something else
-		\begin{itemize}
-			\item post reference: the author references to another post in the thread (e.g. \textit{"Earlier Dago said that..."})
-			\item item reference: the author references to a previously introduced item (e.g. \textit{"what does that command do exactly?"})
-			\item channel reference: the author references to another communication channel (e.g. \textit{"Check the forums, we just discussed this subject and procedures for both dd and rsync"})
-		\end{itemize}
-	\item Conversational information: information on the conversation's flow
-		\begin{itemize}
-			\item Answer acknowledgment: the author confirms the good reception and understanding of an answer (e.g. \textit{"OK."})
-				\begin{itemize}
-					\item Answer confirmation: the sentence confirms that a proposed solution worked (e.g. \textit{"Perfect!!"})
-					\item Answer rejection: the sentence rejects an answer because the solution is inapplicable or didn't work (e.g. \textit{"Thanks. But the CD still doesn't work"})
-				\end{itemize}
-			\item Thread closure: the sentence announces that the conversation is over or that the problem was resolved or cannot be resolved
-		\end{itemize}
-	\item Edition artifact: formal element showing the message has been modified, by the author or a moderator for example (e.g. \textit{"[snip]"})
-	\item Hyperlink: hypertext link pointing toward another document (e.g. \textit{"https://lists.ubuntu.com/mailman/listinfo/ubuntu-users"})
+	\item Question: a sentence worded or expressed so as to explicitly elicit information (e.g. \textit{"Should I just change them by hand?", "Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
+		\item Clarification request: request for more specific information or confirmation that the author has correctly understood an utterance (e.g. \textit{"do you mean the starterbar from gdesklets?", "Which exact packages are you getting an error from?"})
+	\item Request for assistance: call for help (e.g. \textit{"please help!", "can anyone help me???", "i could use some help"})
+	\item Suggestion: an idea submitted for consideration
+	\item Instruction: information telling how something should be done (e.g. \textit{"Open a terminal"})
 \end{itemize}
 
-% To be sorted:
+\textbf{Expressives}
 
-% \begin{itemize}
-% 	\item Answer...
-% 		\begin{itemize}
-% 			\item From self...
-% 				\begin{itemize}
-% 					\item With explicit solution
-% 					\item With implicit solution
-% 					\item Without solution
-% 					\item Denied (no solution)
-% 				\end{itemize}
-% 			\item From identified third party...
-% 				\begin{itemize}
-% 					\item With explicit solution
-% 					\item With implicit solution
-% 					\item Without solution
-% 					\item Denied (no solution)
-% 				\end{itemize}
-% 			\item From unidentified third party...
-% 				\begin{itemize}
-% 					\item With explicit solution
-% 					\item With implicit solution
-% 					\item Without solution
-% 					\item Denied (no solution)
-% 				\end{itemize}
-% 		\end{itemize}
-% 	\item Solution complement
-% 		\begin{itemize}
-% 			\item Comment on solution ("I know that you don't want to hear this!")
-% 		\end{itemize}
-% 	\item Untested possible solution (from author)
-% 		\begin{itemize}
-% 			\item Hypothesized solution
-% 		\end{itemize}
-% \end{itemize}
+\begin{itemize}
+	\item Greeting: polite words of salutation
+		\begin{itemize}
+			\item General greeting: greeting directed to no one in particular (e.g. \textit{"Hi all", "Hello all"})
+			\item Targeted greeting: greeting directed at a specific participant or group of participants (e.g. \textit{"Hey Steve"})
+		\end{itemize}
+	\item Signoff: the conclusion of a message (e.g. \textit{"see you", "-best - greg"})
+	\item Thanks: an expression of gratitude
+		\begin{itemize}
+			\item Thanks in advance: an expression of anticipated gratitude (e.g. \textit{"Thanks for any help,"})
+			\item Thanks in reaction: an expression of gratitude for some specific assistance (e.g. \textit{"Thanks I'll try that!"})
+		\end{itemize}
+	\item Opinion: expression of a subjective judgment on a thing or situation (e.g. \textit{"what a nightmare", "this is bullshit", "this OS sucks"})
+		\begin{itemize}
+			\item Feedback: specific type of constructive opinion destined to be used as a basis for the improvement of a product or service
+		\end{itemize}
+	\item False question: question whose function is not to elicit an answer
+		\begin{itemize}
+			\item Rhetorical question: question asked in order to make a point (e.g. \textit{"Are you seriously implying that he should reinstall Ubuntu because of a cosmetic issue?", "Wow, CRTs to store data?"})
+			\item Personal interrogation: question asked in order to express a sentiment (e.g. \textit{"I wonder how it works?", "Come on, how hard can this be?"})
+		\end{itemize}
+	\item Expression of solution confidence: expression of the author's level of confidence in a proposed solution (e.g. \textit{"I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need"})
+	\item Expression of solution preference: expression of the author's preferences (to varying degree) towards a specific type of solution
+\end{itemize}
 
-% Ambiguité entre identification dans les texte des concepts de questions, problèmes, et solutions
-% Plusieurs étiquettes par phrase / marcher par phrasèmes
-% Distinguer DA selon la source ?
-% Tout peut être "complement", utiliser gradients
-% Concerning the problem / concerning the solution
-% Annoter le sujet ?
-% formalisation du problème ("can I do this ?")
+\subsection{Problem/Solution Classes}
 
-% \subsection{Annotation protocol}
-
-% This is a proposed protocol for a future annotation task (work in progress).
-
-% \begin{enumerate}
-% 	\item Sentences are identified (can be automated)
-% 	\item 
-% 		\begin{enumerate}
-% 			\item Sentences are classified into speech acts (see \ref{sec:taxonomy})
-% 			\item Speech acts dependencies are found
-% 		\end{enumerate}
-% 	\item 
-% 		\begin{enumerate}
-% 			\item Sentences that do not bear the same speech act as the previous one are marked as boundaries
-% 			\item Further boundaries are inserted when, for two consecutive sentences bearing the same speech act:
-% 				\begin{enumerate}
-% 					\item Their speech acts are either Q-Q or OTHER
-% 					\item Their speech acts are not both linked to the same sentence
-% 				\end{enumerate}
-% 		\end{enumerate}
-% \end{enumerate}
-
-% \subsection{Taxonomy}
-% \label{sec:taxonomy}
-
-% This taxonomy is a work in progress.\newline
-
-% \textit{Question subclasses:} \\
-% \textbf{Question-Question}: the sentence contains a new question. \\
-% \textbf{Question-Add}: the sentence supplements a question by providing additional information, or asking a follow-up question. \\
-% \textbf{Question-Problem}: the sentence introduces a question by stating a problem or one's motivations. \\
-% \textbf{Question-Confirmation}: the sentence confirms details of the question or confirms that the same problem is being experienced by a non-initiator. \\
-% \textbf{Question-Correction}: the sentence corrects errors in a question. \\
-% \textbf{Question-Resolution}: the sentence confirms the question has been answered or rendered moot. \\
-
-% \textit{Answer subclasses:} \\
-% \textbf{Answer-Answer}: the sentence proposes an answer to a question. \\
-% \textbf{Answer-Add}: the sentence supplements an answer by providing additional information. \\
-% \textbf{Answer-Confirmation}: the sentence confirms details of the answer and/or that it should work. \\
-% \textbf{Answer-Correction}: the sentence points out error(s) in an answer and/or corrects them. \\
-% \textbf{Answer-Objection}: the sentence objects to an answer. \\
-% \textbf{Answer-Acknowledgment}: the sentence acknowledges an answer without confirming or hindering it (by the question initiator only). \\
-
-% \textit{Orphan classes:} \\
-% \textbf{Ungrammatical}: the sentence is not grammatical (noise, punctuation, code, link, markup, ASCII art...). \\
-% \textbf{Signature}: the sentence is part of the sender's signature block. \\
-% \textbf{Civility}: the sentence is a polite mechanism that no other purpose. \\
-% \textbf{Quote}: the sentence is quoted from a previous message
-% \textbf{Other}: the sentence does not belong to any of the above classes. \\
-
-% \begin{table}[H]
-% 	\begin{tabularx}{\textwidth}{c Y Y}
-% 		Class & Abbreviation & Dependency \\
-% 		\toprule
-% 		Question-Question & Q-Q & A-A (optional) \\
-% 		Question-Add & Q-ADD & Q-Q \\
-% 		Question-Problem & Q-PRO & Q-Q \\
-% 		Question-Confirmation & Q-CON & Q-Q \\
-% 		Question-Correction & Q-COR & Q-Q \\
-% 		Question-Resolution & Q-RES & Q-Q, A-A (optional) \\
-% 		\midrule
-% 		Answer-Answer & A-A & Q-Q \\
-% 		Answer-Add & A-ADD & A-A \\
-% 		Answer-Confirmation & A-CON & A-A \\
-% 		Answer-Correction & A-COR & A-A \\
-% 		Answer-Objection & A-OBJ & A-A \\
-% 		Answer-Acknowledgment & A-ACK & A-A \\
-% 		\midrule
-% 		Ungrammatical & U & - \\
-% 		Civility & C & - \\
-% 		Signature & S & - \\
-% 		Quote & QUO & - \\
-% 		Other & O & - \\
-% 		\bottomrule
-% 	\end{tabularx}
-% 	\caption{Speech act taxonomy.}
-% 	\label{fig:taxonomy}
-% \end{table}
+\begin{itemize}
+	\item Solution
+		\begin{itemize}
+			\item Definition
+				\begin{itemize}
+					\item Statement - proposes a solution to a given problem
+					\item Correction - corrects an inaccurate aspect of the solution
+					\item Explanation - explains why the solution will work
+				\end{itemize}
+			\item Reception
+				\begin{itemize}
+					\item Acknowledgement - acknowledges the solution
+					\item Confirmation - confirms the solution works
+					\item Rejection - rejects the solution
+					\item Objection - objects to the merits of the solution
+				\end{itemize}
+		\end{itemize}
+	\item Problem
+		\begin{itemize}
+			\item Definition
+				\begin{itemize}
+					\item Statement - states the problem, describes "symptoms"
+					\item Correction - corrects an inaccurate problem statement
+					\item Explanation - explains why the problem happens
+				\end{itemize}
+			\item Reception
+				\begin{itemize}
+					\item Confirmation - confirms the existence or properties of the problem
+					\item Assimilation - claims the problem has been reproduced / is similar to another one
+					\item Acknowledgement - acknowledges the existence of the problem
+				\end{itemize}
+			\item Status
+				\begin{itemize}
+					\item Resolution - marks the problem as resolved
+					\item Claim of insolvability - claims the problem is not solvable
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
 
 \bibliographystyle{apalike}
 \bibliography{bibliography}
