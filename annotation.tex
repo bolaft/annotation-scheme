@@ -351,7 +351,14 @@ Here we describe our findings and proposal.
 
 \subsection{Discourse Classes}
 
+These classes are mutually exclusive and must cover the entire text. Therefore each sentence belong to one and only one of these classes.
+
+\vspace{0.5cm}
 \textbf{New Content}
+\vspace{0.1cm}
+
+Sentences are considered to be ``new content'' if they were written expressely for the considered message.
+
 \begin{itemize}
 	\item Speech Acts (see subsection \ref{subsec:speech_act_classes} for details)
 	\item Structure
@@ -393,6 +400,9 @@ Here we describe our findings and proposal.
 \end{itemize}
 
 \textbf{Quote}
+\vspace{0.1cm}
+
+A sentence is a ``quote'' if it already appears in another message or if it is taken from an external source.
 
 \begin{itemize}
 	\item Replied text: content quoted from a previous message in the thread
@@ -401,6 +411,9 @@ Here we describe our findings and proposal.
 \end{itemize}
 
 \textbf{Boilerplate}
+\vspace{0.1cm}
+
+Sentences are considered as ``boilerplate'' if they are intended to be reused by the author (or a group of authors). ``Boilerplate'' sentences frame the message.
 
 \begin{itemize}
 	\item Signature: the message author's identity
@@ -416,7 +429,15 @@ Here we describe our findings and proposal.
 \subsection{Speech Act Classes}
 \label{subsec:speech_act_classes}
 
-\textbf{Representatives}
+The \textbf{speech act} superclass contains four subclasses: \textbf{assertives}, \textbf{commissives}, \textbf{directives} and \textbf{expressives}. 
+
+They are derived from the five classes defined in \cite{searle1976taxonomy} (the fifth class, "declarations", was omitted because we assume it will almost never appear in our corpus: \cite{qadir2011classifying} found almost no example of it in their datasets).
+
+\vspace{0.3cm}
+\textbf{Assertives}
+\vspace{0.1cm}
+
+Assertives are sentences that commit a speaker to the truth of the expressed proposition.
 
 \begin{itemize}
 	\item Subjective report: account of something the author has observed, heard, done, or investigated
@@ -457,6 +478,9 @@ Here we describe our findings and proposal.
 \end{itemize}
 
 \textbf{Commissives}
+\vspace{0.1cm}
+
+Commissives are sentences containing a stated commitment from the author.
 
 \begin{itemize}
 	\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search..."})
@@ -464,6 +488,9 @@ Here we describe our findings and proposal.
 \end{itemize}
 
 \textbf{Directives}
+\vspace{0.1cm}
+
+Directives are sentences containing an expectation that readers will do something as a response.
 
 \begin{itemize}
 	\item Question: a sentence worded or expressed so as to explicitly elicit information (e.g. \textit{"Should I just change them by hand?", "Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
@@ -474,6 +501,9 @@ Here we describe our findings and proposal.
 \end{itemize}
 
 \textbf{Expressives}
+\vspace{0.1cm}
+
+Expressives are sentences containing a statement of the author's psychological state.
 
 \begin{itemize}
 	\item Greeting: polite words of salutation
@@ -502,42 +532,42 @@ Here we describe our findings and proposal.
 
 \subsection{Problem/Solution Classes}
 
+The following taxonomy aims at capturing the way conversation participant introduce, explain and communicate about these problems and solutions.
+
+The whole text doesn't have to be classified into these classes. Some sentences don't belong in any of them. 
+
+\subsubsection{Primary Classes}
+
+In online conversations bearing expressions of need and attempts at answering to those needs, we consider that sentences may bear information on two types of abstract objects: problems, and solutions.
+
+These two classes are mutually exclusive.
+
 \begin{itemize}
-	\item Solution
+	\item Problem: an unwelcome matter or situation affecting one or several participants, that is considered harmful or needs to be resolved or worked around.
+	\item Solution: a way of solving or working around a specific problem previously introduced in the conversation, usually in the first message of the thread.
+\end{itemize}
+
+\subsubsection{Secondary Classes}
+
+These classes define the kind of information a sentence brings about a problem or a solution.
+
+These classes are not mutually exclusive: a single sentence can belong into multiple classes.
+
+\begin{itemize}
+	\item Definition: information about the nature of the object
 		\begin{itemize}
-			\item Definition
-				\begin{itemize}
-					\item Statement - proposes a solution to a given problem
-					\item Correction - corrects an inaccurate aspect of the solution
-					\item Explanation - explains why the solution will work
-				\end{itemize}
-			\item Reception
-				\begin{itemize}
-					\item Acknowledgement - acknowledges the solution
-					\item Confirmation - confirms the solution works
-					\item Rejection - rejects the solution
-					\item Objection - objects to the merits of the solution
-				\end{itemize}
+			\item Statement: brings new information on the object (for example, one of the steps of a solution, or the symptoms of a perceived problem)
+			\item Correction: brings new information on the object while making some previously stated information obsolete
+			\item Explanation: explains why the source of the problem, or why the solution is supposed to work; adds deeper level information
 		\end{itemize}
-	\item Problem
+	\item Reception: information about the evolution and status of the object and the participants interactions about the object
 		\begin{itemize}
-			\item Definition
-				\begin{itemize}
-					\item Statement - states the problem, describes "symptoms"
-					\item Correction - corrects an inaccurate problem statement
-					\item Explanation - explains why the problem happens
-				\end{itemize}
-			\item Reception
-				\begin{itemize}
-					\item Confirmation - confirms the existence or properties of the problem
-					\item Assimilation - claims the problem has been reproduced / is similar to another one
-					\item Acknowledgement - acknowledges the existence of the problem
-				\end{itemize}
-			\item Status
-				\begin{itemize}
-					\item Resolution - marks the problem as resolved
-					\item Claim of insolvability - claims the problem is not solvable
-				\end{itemize}
+			\item Confirmation: confirms the existence or properties of the problem, or that a solution works
+			\item Assimilation: a claim that a problem or solution has been observed by a different participant, in a different context, or both
+			\item Acknowledgement: the action of expressing the good reception of new information
+			\item Refutal: claim that the problem is not solvable or that the solution cannot work
+			\item Objection: objection to the merits of the solution or the proper reporting of a problem
+			\item Resolution: confirms that a solution works and/or that a problem has been resolved
 		\end{itemize}
 \end{itemize}
 
