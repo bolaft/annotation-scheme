@@ -30,9 +30,51 @@
 
 \section{Introduction}
 
-Our goal is to develop an annotation scheme and protocol for the classification of email sentences or groups of sentences, which will have to be generalized to other forms of online written communication, in terms of speech acts. A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in \cite{hernandez2014exploiting}.
+\subsection{Objects and definitions}
 
-\todo{Plus de détails sur les objectifs dans l'introduction}
+The objects of our study are computer-mediated - or "online" - written conversations. This includes conversations taking place through a number of mediums, such as web forums, message boards, mailing lists, chatrooms, and website comment sections. It excludes all forms of oral speech, as well as their transcripts. It also excludes all forms of offline written speech, such as a the dialogues between characters in a book, journalistic interviews or messages written in a guestbook. 
+
+\subsubsection{Participants, messages and subjects}
+
+The conversations as we define them have three main characteristics:
+
+\begin{itemize}
+	\item Multiple \textit{participants}: a conversation is interactive by definition, and we define participants as human beings (bots are not participants) taking actively part in the conversation by contributing new content.
+	\item Multiple \textit{messages}: a conversation is built of several messages from various participants, and we define messages as the smallest technical unit of communication handled by the given medium (e.g. in a forum, posts are messages, in a mailing list, emails are messages, etc.).
+	\item A \textit{subject}: conversations revolves around defined subjects, which are \textit{not} necessarily the formally defined subject lines or forum thread names (easily extracted from metadata), but rather the underlying motivation behind the conversation: i.e., what it is \textit{about}.
+\end{itemize}
+
+\subsubsection{Dialogues, polylogues and roles}
+
+We make the distinction between \textit{dialogues}, conversations between two participants, and \textit{polylogues}, conversations between two participants \textit{or more}. 
+
+Usually, in corpora constituted exclusively of dialogues, each participant has a well defined \textit{role}. For example, one may be a customer service agent and the other one a customer. In these scenarios, roles are static and remain the same through many conversations. Moreover, these conversations are often private: no one can "jump in" and send messages. But in other, more general corpora, where anyone can participate in a conversation, roles are not as well defined and can fluctuate during a conversation. It is however true in most cases that the conversation initiator (i.e. the first participant to send a message) is likely to be the one with the problem and thus the only one who can define it, acknowledge solutions for it and actually act on it in the real world.
+
+\subsubsection{Problems and solutions}
+
+We are more specifically interested in a more particular kind of conversation: functional conversations, i.e. conversations that are designed to convey information in order to help achieve an goal. When the motivation behind a conversation is to find solutions to a stated problem, we consider them to be problem/solution oriented conversations. They have a clearly stated goal and can be \textit{resolved}. These are at the heart of our research goals.
+\newline
+\newline
+We define problems and solutions as follows:
+
+\begin{itemize}
+	\item Problem: an unwelcome matter or situation affecting one or several participants, that is considered harmful or needs to be resolved or worked around.
+	\item Solution: a way of solving or working around a specific problem previously introduced in the conversation, usually in the first message of the thread.
+\end{itemize}
+
+\subsection{Goals}
+
+Our goal is to develop an annotation scheme and protocol for the classification of message sentences in problem/solution oriented conversations. The scheme should facilitate the problem/solution oriented analysis of message text, which, in turn, can be used for a number of applications:
+
+\begin{itemize}
+	\item Problem/solution oriented information retrieval (e.g. finding relevant documentation for a problem stated in natural language)
+	\item Solution finding (e.g. the proposal of previous solutions that worked for a similar problem)
+	\item Cross-modal analysis (e.g. using data from different sources to improve the efficiency of other tasks)
+	\item Modality/channel relevance estimation (e.g. assisting users in finding the best place to find help)
+	\item Etc.
+\end{itemize}
+
+A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in \cite{hernandez2014exploiting}.
 
 \section{Background and Bibliography}
 
@@ -118,10 +160,6 @@ Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomie
 \subsection{Verbal Response Modes}
 
 \todo[inline]{Ajouter quelques paragraphes sur les VRM}
-
-\subsection{Terms and Definitions}
-
-\todo[inline]{Définir les termes importants qui seront utilisés ensuite dans le document (participants, rôles, discussions, messages...)}
 
 \subsection{Bibliography}
 
@@ -459,7 +497,7 @@ Assertives are sentences that commit a speaker to the truth of the expressed pro
 		\begin{itemize}
 			\item Event description: description of an event
 			\item System description: retranscription of a system's settings or specifications (e.g. \textit{"My ubuntu 1 bandwidth settings are set to -1", "I am using ubuntu 12.04"})
-			\item Author profile: description of the author's identity, habits, experiences, preferences or skills (e.g. \textit{"Coming from a Winows world, I've probably been spoiled but..."})
+			\item Author profile: description of the author's identity, habits, experiences, preferences or skills (e.g. \textit{"Coming from a Windows world, I've probably been spoiled but..."})
 		\end{itemize}
 	\item Assimilation: expression of a belief in the similarity or non-similarity of two things
 		\begin{itemize}
