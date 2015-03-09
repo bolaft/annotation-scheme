@@ -1,0 +1,76 @@
+\subsection{Discourse Classes}
+
+These classes are mutually exclusive and must cover the entire text. Therefore each sentence belong to one and only one of these classes.
+
+\vspace{0.5cm}
+\textbf{New Content}
+\vspace{0.1cm}
+
+Sentences are considered to be ``new content'' if they were written expressely for the considered message.
+
+\begin{itemize}
+	\item Speech Acts (see subsection \ref{subsec:speech_act_classes} for details)
+	\item Structure
+		\begin{itemize}
+			\item Metadiscourse: sentences that comments on surrounding text
+				\begin{itemize}
+					\item Utterance introduction: sentences that introduces an upcoming sentence
+						\begin{itemize}
+							\item Question introduction: sentence that introduces a question (e.g. \textit{"the question f this mail is..."})
+							\item Problem introduction: sentence that introduces a problem description (e.g. \textit{"here's my problem"})
+							\item Instructions introduction: sentence that introduces a series of instructions (e.g. \textit{"do this:", "Then release them and press the F2 key."})
+							\item Quote introduction: sentence that introduces a quote - may be automatic (e.g. \textit{"On 20/02/07, Larry wrote:"})
+						\end{itemize}
+					\item Utterance qualifier: sentences that qualify a previous sentence (e.g. \textit{"just a thought"})
+				\end{itemize}
+			\item Structure marks: non-sentences bearing structural information
+				\begin{itemize}
+					\item Non-verbal separator: non-linguistic character sequence separating two parts of a message (e.g. \textit{"--"})
+					\item Heading: title announcing a new section of the message (e.g. \textit{"****DISCLAIMER****"})
+				\end{itemize}
+			\item Reference: sentences that mention or allude to something else
+				\begin{itemize}
+					\item post reference: the author references to another post in the thread (e.g. \textit{"Earlier Dago said that..."})
+					\item item reference: the author references to a previously introduced item (e.g. \textit{"what does that command do exactly?"})
+					\item channel reference: the author references to another communication channel (e.g. \textit{"Check the forums, we just discussed this subject and procedures for both dd and rsync"})
+				\end{itemize}
+			\item Conversational information: information on the conversation's flow
+				\begin{itemize}
+					\item Answer acknowledgment: the author confirms the good reception and understanding of an answer (e.g. \textit{"OK."})
+						\begin{itemize}
+							\item Answer confirmation: the sentence confirms that a proposed solution worked (e.g. \textit{"Perfect!!"})
+							\item Answer rejection: the sentence rejects an answer because the solution is inapplicable or didn't work (e.g. \textit{"Thanks. But the CD still doesn't work"})
+						\end{itemize}
+					\item Thread closure: the sentence announces that the conversation is over or that the problem was resolved or cannot be resolved
+				\end{itemize}
+			\item Edition artifact: formal element showing the message has been modified, by the author or a moderator for example (e.g. \textit{"[snip]"})
+			\item Hyperlink: hypertext link pointing toward another document (e.g. \textit{"https://lists.ubuntu.com/mailman/listinfo/ubuntu-users"})
+		\end{itemize}
+\end{itemize}
+
+\textbf{Quote}
+\vspace{0.1cm}
+
+A sentence is a ``quote'' if it already appears in another message or if it is taken from an external source.
+
+\begin{itemize}
+	\item Replied text: content quoted from a previous message in the thread
+	\item Forwarded text: content from a message outside the current conversation that has been forwarded by the current message (email only)
+	\item Quotation: quote from an outside source, such as a monologue document, a book, or a retranscription of famous spoken words
+\end{itemize}
+
+\textbf{Boilerplate}
+\vspace{0.1cm}
+
+Sentences are considered as ``boilerplate'' if they are intended to be reused by the author (or a group of authors). ``Boilerplate'' sentences frame the message.
+
+\begin{itemize}
+	\item Signature: the message author's identity
+		\begin{itemize}
+			\item Automatic signature: signature automatically appended to the message (e.g. \textit{"Brian Lunergan Nepean, Ontario Canada"})
+			\item Manual: signature written by the author for this specific message (e.g. \textit{"Sean"})
+		\end{itemize}
+	\item Advertisement: advertising material automatically appended to the message (e.g. \textit{"Novo Yahoo!"})
+	\item Disclaimer: legal disclaimers and privacy statements automatically appended to the message
+	\item Contact: the author's contact information (e.g. \textit{"mns:renato4010591@hotmail.com"})
+\end{itemize}

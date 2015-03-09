@@ -10,6 +10,9 @@
 \usepackage{tabularx, booktabs}
 \usepackage{float}
 \usepackage[textwidth=4cm]{todonotes}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
 
 \restylefloat{figure}
 \restylefloat{table[H]}
@@ -30,593 +33,66 @@
 
 \section{Introduction}
 
-\subsection{Objects and definitions}
+\input{parts/introduction/objects_and_definitions}
 
-The objects of our study are computer-mediated - or "online" - written conversations. This includes conversations taking place through a number of mediums, such as web forums, message boards, mailing lists, chatrooms, and website comment sections. It excludes all forms of oral speech, as well as their transcripts. It also excludes all forms of offline written speech, such as a the dialogues between characters in a book, journalistic interviews or messages written in a guestbook. 
+\input{parts/introduction/goals}
 
-\subsubsection{Participants, messages and subjects}
+% \section{Background}
 
-The conversations as we define them have three main characteristics:
+% In this section we introduce the concept of dialog act (DA).
 
-\begin{itemize}
-	\item Multiple \textit{participants}: a conversation is interactive by definition, and we define participants as human beings (bots are not participants) taking actively part in the conversation by contributing new content.
-	\item Multiple \textit{messages}: a conversation is built of several messages from various participants, and we define messages as the smallest technical unit of communication handled by the given medium (e.g. in a forum, posts are messages, in a mailing list, emails are messages, etc.).
-	\item A \textit{subject}: conversations revolves around defined subjects, which are \textit{not} necessarily the formally defined subject lines or forum thread names (easily extracted from metadata), but rather the underlying motivation behind the conversation: i.e., what it is \textit{about}.
-\end{itemize}
+% \input{parts/background/speech_acts}
 
-\subsubsection{Dialogues, polylogues and roles}
+% \input{parts/background/verbal_response_modes}
 
-We make the distinction between \textit{dialogues}, conversations between two participants, and \textit{polylogues}, conversations between two participants \textit{or more}. 
+% \section{Bibliography}
 
-Usually, in corpora constituted exclusively of dialogues, each participant has a well defined \textit{role}. For example, one may be a customer service agent and the other one a customer. In these scenarios, roles are static and remain the same through many conversations. Moreover, these conversations are often private: no one can "jump in" and send messages. But in other, more general corpora, where anyone can participate in a conversation, roles are not as well defined and can fluctuate during a conversation. It is however true in most cases that the conversation initiator (i.e. the first participant to send a message) is likely to be the one with the problem and thus the only one who can define it, acknowledge solutions for it and actually act on it in the real world.
+% \todo[inline]{Ajouter un paragraphe introductif + tableau qui restitue les différents travaux entre eux (par domaine, corpus, schéma, tâche, approche...)}
 
-\subsubsection{Problems and solutions}
+% \subsection{Online written conversation analysis}
 
-We are more specifically interested in a more particular kind of conversation: functional conversations, i.e. conversations that are designed to convey information in order to help achieve an goal. When the motivation behind a conversation is to find solutions to a stated problem, we consider them to be problem/solution oriented conversations. They have a clearly stated goal and can be \textit{resolved}. These are at the heart of our research goals.
-\newline
-\newline
-We define problems and solutions as follows:
+% \input{parts/bibliography/qadir2011classifying}
 
-\begin{itemize}
-	\item Problem: an unwelcome matter or situation affecting one or several participants, that is considered harmful or needs to be resolved or worked around.
-	\item Solution: a way of solving or working around a specific problem previously introduced in the conversation, usually in the first message of the thread.
-\end{itemize}
+% \input{parts/bibliography/kim2010tagging}
 
-\subsection{Goals}
+% \input{parts/bibliography/lampert2009segmenting}
 
-Our goal is to develop an annotation scheme and protocol for the classification of message sentences in problem/solution oriented conversations. The scheme should facilitate the problem/solution oriented analysis of message text, which, in turn, can be used for a number of applications:
+% \subsection{Dialog act taxonomies}
 
-\begin{itemize}
-	\item Problem/solution oriented information retrieval (e.g. finding relevant documentation for a problem stated in natural language)
-	\item Solution finding (e.g. the proposal of previous solutions that worked for a similar problem)
-	\item Cross-modal analysis (e.g. using data from different sources to improve the efficiency of other tasks)
-	\item Modality/channel relevance estimation (e.g. assisting users in finding the best place to find help)
-	\item Etc.
-\end{itemize}
+% \input{parts/bibliography/core1997coding}
 
-A further objective is to use such annotated data to produce a sample segmentation of our email corpus so that we can test the validity of the hypotheses made in \cite{hernandez2014exploiting}.
+% \input{parts/bibliography/bunt2009dit++}
 
-\section{Background and Bibliography}
-
-In this section we introduce the concept of dialog act (DA) and provide details concerning a few works related to the field of speech act recognition and email segmentation.
-
-\subsection{Speech Acts}
-
-Speech act theory \cite{austin1975things} attempts to describe utterances in terms of communicative function (e.g. question, answer, thanks...). Indeed, utterances are not limited to their semantic content, they also have a communicative function : a goal, and an effect. For Austin, they can be analyzed at three levels: locutory (the linguistic characteristics of the utterance), illocutory (the intention of the speaker) and perlocutory (the real-world effects of the utterance). When we refer to speech acts\footnote{Also known as dialog acts}, we are interested in the illocutory level of utterance analysis. 
-
-Thus, in most works, it is in terms of speech acts that interactions between participants of a conversation are modeled. Austin considers utterances as actions performed by a speaker ; this is based on the idea that every enunciation is the realization of a social act. Verbs that specify these actions are called \textit{performative verbs}, such as when someone says "I grant you the title of captain". But speech acts are not only constituted by these kinds of verbs. \cite{searle1976taxonomy} offers five classes of dialog acts : assertives (assertion...), directives (order, request, advice, etc.), commissives (promise, invitation, etc.), expressives (congratulations, thanks, etc.) and declarations (war declaration, nomination, baptism, etc.).
-
-There are a number of different speech act taxonomies \cite{traum200020}. Two of them can be considered foundational: first Austin's and then Searle's. Both contain five classes of speech acts, that can be defined as such:
-
-\todo{Réécrire définitions (en l'état copié/collé Wikipédia)}
-
-\begin{itemize}
-	\item Assertives: speech acts that commit a speaker to the truth of the expressed proposition, e.g. reciting a creed.
-	\item Directives: speech acts that are to cause the hearer to take a particular action, e.g. requests, commands and advice.
-	\item Commissives: speech acts that commit a speaker to some future action, e.g. promises and oaths.
-	\item Expressives: speech acts that express the speaker's attitudes and emotions towards the proposition, e.g. congratulations, excuses and thanks.
-	\item Declaratives: speech acts that change the reality in accord with the proposition of the declaration, e.g. baptisms, pronouncing someone guilty or pronouncing someone husband and wife.
-\end{itemize}
-
-Table \ref{fig:fundamentalTaxonomies} gives verb examples of these two taxonomies. Table \ref{fig:emailTaxonomies} presents a few more recent taxonomies specifically used in the context of online conversation analysis.
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{c c c}
-		\toprule
-		\cite{austin1975things} & \cite{searle1976taxonomy} & Examples \\
-		\midrule
-		Verdictives & Declarations & To condemn, decree... \\
-		Exercitives & Directives & To command, order, forgive... \\
-		Commissives & Commissives & To promise, guarantee, bet, swear... \\
-		Behabitives & Expressives & To apologize, thank, criticize... \\
-		Expositives & Assertives & To assert, deny, postulate... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Foundational taxonomies for speech acts categorization}
-	\label{fig:fundamentalTaxonomies}
-\end{table}
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{c c c}
-		\toprule
-		Act & Corpus & Reference \\
-		\midrule
-		Disclosure &  & \\
-		Edification &  & \\
-		Advisement &  & \\
-		Confirmation & Multi-domain & \cite{Lampert_classifyingspeech} \\
-		Question &  & \\
-		Acknowledgment &  & \\
-		Interpretation &  & \\
-		Reflection &  & \\
-		\midrule
-		Direct request &  & \\
-		Question-request &  & \\
-		Open question &  & \\
-		First person commitment & Corporate email & \cite{de2013classification} \\
-		First person expression of feeling &  & \\
-		First person other &  & \\
-		Other statements &  & \\
-		\midrule
-		Accept response &  & \\
-		Acknowledge and appreciate &  & \\
-		Action motivator &  & \\
-		Polite mechanism &  & \\
-		Rhetorical question &  & \\
-		Open-ended question & BC3 & \cite{JanAAAI08} \\
-		Or/or-clause question &  & \\
-		Wh-question &  & \\
-		Yes-no question &  & \\
-		Reject response &  & \\
-		Statement &  & \\
-		Uncertain response &  & \\
-		\bottomrule
-	\end{tabularx}
-	\todo[inline]{À enrichir}
-	\caption{Examples of speech act taxonomies specific to online conversation analysis}
-	\label{fig:emailTaxonomies}
-\end{table}
-
-\subsection{Verbal Response Modes}
-
-\todo[inline]{Ajouter quelques paragraphes sur les VRM}
-
-\subsection{Bibliography}
-
-\todo[inline]{Ajouter un paragraphe introductif + tableau qui restitue les différents travaux entre eux (par domaine, corpus, schéma, tâche, approche...)}
-
-\subsubsection{Sentence classification in message board posts}
-
-Here we explain the work of \cite{qadir2011classifying}. Their research is relevant to our work because of their goal - to classify sentences as speech acts in online messages, because of their data - web forum posts, and because of their taxonomy - which is based on speech acts.
-
-\vspace{0.5cm}
-\textbf{Goals:}
-\vspace{0.1cm}
-
-The authors work with message board posts. They consider that not all sentences carry a speech act. Their primary goal is to distinguish between those that do and those that don't (which they call \todo{Mieux définir "expository", positionner le terme par rapport aux expositives d'Austin et les assertives de Searle}\textit{expository sentences}). Their second goal is to classify speech act sentences into four types: \textit{commissives}, \textit{directives}, \textit{expressives} and \textit{representatives}. These four classes are derived from the work of \cite{searle1976taxonomy}. Searle's fifth type of speech acts, \textit{declarations}, was omitted because the authors found almost no examples of it in their corpus. \todo{Expliquer dans le texte pas dans une table} This taxonomy is further explained in Table \ref{fig:qadirTaxonomies}.
-
-Their ultimate objective is to develop a system capable of classifying sentences in a topic-independent manner (the data they worked with was extracted from forums dealing with veterinary medicine).
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{c l}
-		\toprule
-		Class & Definition \\
-		\midrule
-		Expository Sentence & Presents or explain information to the reader \\
-		\midrule
-		Commissive & Contains a stated commitment from the author \\
-		Directive & Contains an expectation that readers will do something as a response \\
-		Expressive & Contains a statement of the author's psychological state \\
-		Representative & Commits the author to the truth of a certain proposition \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Taxonomy used in \cite{qadir2011classifying}}
-	\label{fig:qadirTaxonomies}
-\end{table}
-
-\vspace{0.5cm}
-\textbf{Message board specificities:}
-\vspace{0.1cm}
-
-According to the authors, speech acts occur differently in message board posts than in spoken dialog. 
-
-They found that while the most common everyday occurrences of \textit{commissives} are promises and threats, it is not so in forum data. Most occurrences of this type of speech act correspond to confirmations that the participant will perform some action in the future. The authors also consider that declarations from the participant that they will not do something are sentences carrying such a speech act.
-
-They found that \textit{directive} speech acts are common in message board posts, in particular under the form of a question or a request for assistance or advice. They attempt to weed out rhetorical questions from sentences classified as \textit{directives}.
-
-The authors found that typical examples of \textit{expressive} speech acts occur when a participant thanks, welcomes or apologizes to a reader. They found this class to be very common in message board posts.
-
-\textit{Representative} speech acts were uncommon in the corpus they used. They chose to ignore most sentences stated as fact even though they might correspond to Searle's definition of a representative speech act and and label them as \textit{expository sentences} instead. They considered that sentences belonged in that class only when a doctor explicitly presented an opinion or hypothesis as their own (such as sentences starting with "I suspect that...").
-
-\vspace{0.5cm}
-\textbf{Classification:}
-\vspace{0.1cm}
-
-The authors chose to approach the problem as a supervised classification task. Instead of a single classifier, they chose to train four different binary models, one for each class, and run them against the data. Therefore a single sentence can contain several speech acts. A preliminary classifier was trained just to filter out sentences containing no speech act (\textit{expository sentences}).
-
-They use a number of different feature sets for the classification task. First, they consider lexical and syntactic features. Such features include: unigrams, personal pronouns, tense, modals, plan phrases, punctuation, sentence position, number of verbs, and others. Second, they consider speech act word clues. In \cite{searle1976taxonomy}, the author listed a number words that he considered to be indicative of speech acts. Here, the authors chose to discard a few that they considered too general and added new ones, such as a list of speech act verbs originally published by \cite{wierzbicka1987english}. Their system recognize all derivations of these word clues.
-
-The classifiers used were Support Vector Machines (SVMs).
-
-\vspace{0.5cm}
-\textbf{Evaluation:}
-\vspace{0.1cm}
-
-The data set used was constituted of 15,383 message board posts from the Veterinary Information Network (VIN)\footnote{www.vin.com}. These posts covered three topics: cardiology, endocrinology, and feline internal medicine. The preprocessing included number tokenization, the removing of html tags and "basic cleaning" (???). Experiments were performed on a random sample of 150 threads from the collection. These threads contained 1,956 sentences (13.04 sentences per post).
-
-The gold standard was built from the manual annotation of message posts by two human annotators provided with detailed annotation guidelines. A sample of 50 posts was independently annotated by them in order to calculate the annotator agreement. However, the authors ran into the same problem \cite{kim2010taggingandlinking} did, that is the fact that the standard Cohen's Kappa is not applicable to multi-class annotation tasks. Since they found only a small number of sentences classified as containing several speech acts, these were discarded and the kappa was calculated for the rest. The result was a score of .95, an extremely high agreement. However the "no speech act" class was by far the most predominant (70\%), so the kappa score does not necessarily mean that annotators mostly agreed on speech act classification decisions. The authors therefore computed the kappa for each speech act class and found an average score of 87.25\%, which is still very high. Table \ref{fig:qadirRepartition} shows the repartition of speech acts in their dataset.
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{Y Y}
-		\toprule
-		Class & Proportion \\
-		\midrule
-		None & 71.42\% \\
-		Directive & 15.90\% \\
-		Expressive & 9.92\% \\
-		Representative & 2.91\% \\
-		Commissive & 2.61\% \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Repartition of speech acts in \cite{qadir2011classifying} test data}
-	\label{fig:qadirRepartition}
-\end{table}
-
-The first classifier, the one filtering out sentences containing no speech act, recognized 83\% of the speech act sentences with 86\% precision, and 95\% of the expository  sentences with 93\% precision. As for the speech act categorization task, the authors performed many experiments with a number of different feature combinations, for each speech act category. The authors found that many syntactic and lexical features had little impact on the classification results. Detailed results will not be presented here, but overall results were good for the identification of directive and expressive speech act sentences, less so for representative and commissive speech acts, which proved more difficult to detect.
-
-\subsubsection{Speech act classification applied to forum posts}
-
-Here we explain the work of \cite{kim2010taggingandlinking}. Their research is relevant to our work because of their goal (to link and classify messages) and their corpus (email messages). Their taxonomy, however, is not based on dialog acts.
-
-\vspace{0.5cm}
-\textbf{Methodology:}
-\vspace{0.1cm}
-
-The authors annotate both threads and posts in a corpus built from the CNET forums\footnote{http://forums.cnet.com}. Two annotators use a dedicated tool\footnote{http://mandrake.csse.unimelb.edu.au/~rbp/cgi-bin/su/Classify.py} for the annotation task. Before starting to annotate the overall data set, a pilot annotation was performed to ensure that both annotators had the same understanding of the taxonomy.
-
-\vspace{0.5cm}
-\textbf{Taxonomy:}
-\vspace{0.1cm}
-
-First, they classify threads into two groups of classes: the basic group, which is further subdivided into \textit{Solution Type} classes and \textit{Problem Source} classes, as well as a miscellaneous group. The different classes are detailed in table \ref{fig:threadClasses}. \textit{Solution Type} and \textit{Problem Source} classes can be used either separately or together, therefore there is an additional combined class set made of each combination of a \textit{Solution Type} class and a \textit{Problem Source} class (e.g. \textit{Search-OS} or \textit{Install-Network}). The combined class set being the superset of basic class sets, it was used to do the annotation.
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{Y Y}
-		Class & Group \\
-		\toprule
-		Support & Solution Type \\
-		Documentation & Solution Type \\
-		Install & Solution Type \\
-		Search & Solution Type \\
-		\midrule
-		Hardware & Problem Source \\
-		Operating System & Problem Source \\
-		Software & Problem Source \\
-		Media & Problem Source \\
-		Network & Problem Source \\
-		Programming & Problem Source \\
-		\midrule
-		Spam & Miscellaneous \\
-		Other & Miscellaneous \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Thread classes in \cite{kim2010taggingandlinking}}
-	\label{fig:threadClasses}
-\end{table}
-
-Then, they annotate each individual post with one or several post classes. These classes are categorized into two groups, the answer group and the question group, plus three single classes. The different classes used are detailed in table \ref{fig:postClasses}.
-
-\begin{table}
-	\begin{tabularx}{\textwidth}{Y Y}
-		Class & Group \\
-		\toprule
-		Answer-Answer & Answer \\
-		Answer-Add & Answer \\
-		Answer-Correction & Answer \\
-		Answer-Confirmation & Answer \\
-		Answer-Objection & Answer \\
-		\midrule
-		Question-Question & Question \\
-		Question-Add & Question \\
-		Question-Correction & Question \\
-		Question-Confirmation & Question \\
-		\midrule
-		Resolution & - \\
-		Reproduction & - \\
-		Other & - \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Post classes in \cite{kim2010taggingandlinking}}
-	\label{fig:postClasses}
-\end{table}
-
-\vspace{0.5cm}
-\textbf{Annotator agreement:}
-\vspace{0.1cm}
-
-The authors use Cohen's Kappa to compute annotator agreement:
-
-$$\kappa = \frac{P(a) - P(e)}{1 - P(e)}$$
-
-Where $P(a)$ refers to the relative observed agreement between two annotators, and $P(e)$ is the hypothetical probability of chance agreement between two annotators.
-
-However, as they write: "\textit{The standard Cohen’s Kappa cannot be used in multi-class annotation tasks. By the time the annotation process started, no standard methodology for calculating Cohen’s Kappa for multi-class tasks was found. Therefore, an extended method for calculating $\kappa$ value was proposed to address this problem.}"
-
-They propose an improved Cohen's Kappa for a multi-class situation, but the methodology is not applicable to our case because it takes into account the link information for each class (a concept we do not consider at all).
-
-\vspace{0.5cm}
-\textbf{Classification:}
-\vspace{0.1cm}
-
-The authors use four different models for thread classification: 1 Nearest Neighbor, Naïve Bayes and Support Vector Machine. A majority class model (ZeroR) and a random model (RAND) are used as baselines. Features are weighed using four different schemes: Information Gain (IG), Term Frequency-Inverse Document Frequency (TF-IDF), raw count and simple binary. For post classification, the authors use a conventional Maximum Entropy learner\footnote{http://maxent.sourceforge.net/} as well as two structural learners : SVM-HMMs and CRFs (using \emph{CRF++}\footnote{http://crfpp.sourceforge.net/
-})
-
-Features for threads are built by using the initial post or concatenating all posts in the thread to form the "text" of the thread. They then construct different bag-of-words feature sets by tuning different parameters such as input text, pre-processing, tokenization method, and $n$-gram length. For posts, features used include lexical, structural, contextual, and semantic features.
-
-\vspace{0.5cm}
-\textbf{Evaluation:}
-\vspace{0.1cm}
-
-Results for both thread classification and post classification are evaluated using micro-average precision ($P_{\mu}$), recall ($R_{\mu}$), F-score ($F_{\mu}$) and macro-averaged precision ($P_{M}$), recall ($R_{M}$) and F1-score ($F_{M}$) on a stratified\footnote{The authors make sure that \textit{"if a given post is contained in the test data for a given iteration, all other posts in that same thread are also in the test data (or more pertinently, not in the training data)"}} 10-fold cross-validation.
-
-\subsubsection{Segmentation of email message text}
-
-Here we explain the work of \cite{lampert2009segmenting}. It is relevant to our work because of their goal, which is to classify sentences or text fragments as belonging to such or such message zone, and because of the kind of data they work with: email messages.
-
-\vspace{0.5cm}
-\textbf{Goals:}
-\vspace{0.1cm}
-
-The authors attempt to segment emails into several prototypical areas, called \textit{email zones}. They call their system "Zebra".
-
-\vspace{0.5cm}
-\textbf{Email zones:}
-\vspace{0.1cm}
-
-There are three superclasses containing nine different classes of email zones.
-
-\textit{Sender zones} contain text written by the current sender. This superclass contains the following subclasses: \textit{author} (new content by the sender), \textit{greeting} (polite greetings at the beginning of a message), and \textit{signoff} (closing words of a message).
-
-\textit{Quoted conversation zones} include content quoted from other messages. The subclasses for this superclass are: \textit{reply} (content quoted from a previous message in the thread) and \textit{forward} (content from an email outside the thread that has been forwarded by the current sender).
-
-\textit{Boilerplate zones} contain reusable message content, typically automatically appended to a message. Subclasses include: \textit{signature} (contact information automatically appended at the end of a message), \textit{advertising} (advertising material, typically found at the end of the message), \textit{disclaimer} (legal disclaimers and privacy statements), and \textit{attachment} (automated text indicating attached documents).
-
-\vspace{0.5cm}
-\textbf{Classification:}
-\vspace{0.1cm}
-
-The authors consider that each line of text in the body of a message belongs to one of these \textit{email zones}. The authors tried two approaches: in the first one, a classifier segments a message into zone fragments and then attempts to classify the resulting fragments. In the second approach, the classifier simply works on a line-by-line basis.
-
-In the first approach, the fragment-based one, the message is segmented based on detected \textit{zone boundaries}. These boundaries are identified thanks to what the authors call "buffer lines", i.e. blank lines or lines containing only whitespace or punctuation characters.
-
-The classifier is based on SVMs (Support Vector Machines) and uses graphic, orthographic and lexical features to categorize lines and text fragments.
-
-\vspace{0.5cm}
-\textbf{Evaluation:}
-\vspace{0.1cm}
-
-The training data for their classifier consists of almost 400 messages from the Enron email corpus \cite{klimt2004enron}. To build the gold standard, the authors chose to use only a single annotator since they believe the task to be relatively uncontroversial. Each line - blank lines excepted - was marked by the annotator as belonging to one of the nine zones. They used the resulting 7,922 annotated lines (out of 11,881) as training data for their classifier.
-
-The results are calculated by 10-fold cross-validation. 
-
-The zone boundary detection system (used for the fragment based approach) reaches 90\% accuracy.
-
-Concerning zone classification, interestingly, the line-based approach outperformed the fragment-based one by a small margin, probably due to the 10\% of inaccuracies in boundary detection. Zebra obtains a 91.53\% accuracy for the classification of lines into the three superclasses, and 87.01\% in all nine classes.
+\newpage
 
 \section{Proposal}
 
-Here we describe our findings and proposal.
+% Here we describe our findings and proposal.
 
-\subsection{Discourse Classes}
+% \input{parts/proposal/general_classes}
 
-These classes are mutually exclusive and must cover the entire text. Therefore each sentence belong to one and only one of these classes.
+\input{parts/proposal/dialog_acts}
 
-\vspace{0.5cm}
-\textbf{New Content}
-\vspace{0.1cm}
+% \input{parts/proposal/speech_act_classes}
 
-Sentences are considered to be ``new content'' if they were written expressely for the considered message.
+% \input{parts/proposal/problem_solution_classes}
 
-\begin{itemize}
-	\item Speech Acts (see subsection \ref{subsec:speech_act_classes} for details)
-	\item Structure
-		\begin{itemize}
-			\item Metadiscourse: sentences that comments on surrounding text
-				\begin{itemize}
-					\item Utterance introduction: sentences that introduces an upcoming sentence
-						\begin{itemize}
-							\item Question introduction: sentence that introduces a question (e.g. \textit{"the question f this mail is..."})
-							\item Problem introduction: sentence that introduces a problem description (e.g. \textit{"here's my problem"})
-							\item Instructions introduction: sentence that introduces a series of instructions (e.g. \textit{"do this:", "Then release them and press the F2 key."})
-							\item Quote introduction: sentence that introduces a quote - may be automatic (e.g. \textit{"On 20/02/07, Larry wrote:"})
-						\end{itemize}
-					\item Utterance qualifier: sentences that qualify a previous sentence (e.g. \textit{"just a thought"})
-				\end{itemize}
-			\item Structure marks: non-sentences bearing structural information
-				\begin{itemize}
-					\item Non-verbal separator: non-linguistic character sequence separating two parts of a message (e.g. \textit{"--"})
-					\item Heading: title announcing a new section of the message (e.g. \textit{"****DISCLAIMER****"})
-				\end{itemize}
-			\item Reference: sentences that mention or allude to something else
-				\begin{itemize}
-					\item post reference: the author references to another post in the thread (e.g. \textit{"Earlier Dago said that..."})
-					\item item reference: the author references to a previously introduced item (e.g. \textit{"what does that command do exactly?"})
-					\item channel reference: the author references to another communication channel (e.g. \textit{"Check the forums, we just discussed this subject and procedures for both dd and rsync"})
-				\end{itemize}
-			\item Conversational information: information on the conversation's flow
-				\begin{itemize}
-					\item Answer acknowledgment: the author confirms the good reception and understanding of an answer (e.g. \textit{"OK."})
-						\begin{itemize}
-							\item Answer confirmation: the sentence confirms that a proposed solution worked (e.g. \textit{"Perfect!!"})
-							\item Answer rejection: the sentence rejects an answer because the solution is inapplicable or didn't work (e.g. \textit{"Thanks. But the CD still doesn't work"})
-						\end{itemize}
-					\item Thread closure: the sentence announces that the conversation is over or that the problem was resolved or cannot be resolved
-				\end{itemize}
-			\item Edition artifact: formal element showing the message has been modified, by the author or a moderator for example (e.g. \textit{"[snip]"})
-			\item Hyperlink: hypertext link pointing toward another document (e.g. \textit{"https://lists.ubuntu.com/mailman/listinfo/ubuntu-users"})
-		\end{itemize}
-\end{itemize}
+\newpage
 
-\textbf{Quote}
-\vspace{0.1cm}
+\begin{appendices}
 
-A sentence is a ``quote'' if it already appears in another message or if it is taken from an external source.
+\chapter{Graphical representation of the taxonomy (attached file: $taxonomy.png$)}
 
-\begin{itemize}
-	\item Replied text: content quoted from a previous message in the thread
-	\item Forwarded text: content from a message outside the current conversation that has been forwarded by the current message (email only)
-	\item Quotation: quote from an outside source, such as a monologue document, a book, or a retranscription of famous spoken words
-\end{itemize}
+\begin{figure}[H]
+	\caption{Graphical taxonomy preview}
+	\centering
+	\includegraphics[keepaspectratio,width=0.6\paperwidth]{figures/taxonomy.png}
+	\label{fig:taxonomy}
+\end{figure}
 
-\textbf{Boilerplate}
-\vspace{0.1cm}
+\end{appendices}
 
-Sentences are considered as ``boilerplate'' if they are intended to be reused by the author (or a group of authors). ``Boilerplate'' sentences frame the message.
-
-\begin{itemize}
-	\item Signature: the message author's identity
-		\begin{itemize}
-			\item Automatic signature: signature automatically appended to the message (e.g. \textit{"Brian Lunergan Nepean, Ontario Canada"})
-			\item Manual: signature written by the author for this specific message (e.g. \textit{"Sean"})
-		\end{itemize}
-	\item Advertisement: advertising material automatically appended to the message (e.g. \textit{"Novo Yahoo!"})
-	\item Disclaimer: legal disclaimers and privacy statements automatically appended to the message
-	\item Contact: the author's contact information (e.g. \textit{"mns:renato4010591@hotmail.com"})
-\end{itemize}
-
-\subsection{Speech Act Classes}
-\label{subsec:speech_act_classes}
-
-The \textbf{speech act} superclass contains four subclasses: \textbf{assertives}, \textbf{commissives}, \textbf{directives} and \textbf{expressives}. 
-
-They are derived from the five classes defined in \cite{searle1976taxonomy} (the fifth class, "declarations", was omitted because we assume it will almost never appear in our corpus: \cite{qadir2011classifying} found almost no example of it in their datasets).
-
-\vspace{0.3cm}
-\textbf{Assertives}
-\vspace{0.1cm}
-
-Assertives are sentences that commit a speaker to the truth of the expressed proposition.
-
-\begin{itemize}
-	\item Subjective report: account of something the author has observed, heard, done, or investigated
-		\begin{itemize}
-			\item Action report: reporting of actions taken (e.g. \textit{"I did try apt-cache search geotiff but it didn't work", "I upgraded my system to 10.04 via clean install"})
-			\item Result report: reporting of the results of actions taken (e.g. \textit{"I did try apt-cache search geotiff but it didn't work", "No such luck"})
-				\begin{itemize}
-					\item Solution research result report: specific type of result report pertaining to the search for a solution (e.g. \textit{"I couldn't find anything on the forums"})
-				\end{itemize}
-			\item Observation: a remark, statement, or comment based on something one noticed ("It doesn't happen every time I move the cursor, it is completely random")
-		\end{itemize}
-	\item Objective report: exact reporting of something without author interpretation
-		\begin{itemize}
-			\item Computer text: copy-and-paste of code, log, or commands (e.g. \textit{"usermod - G admin 2ndroot"})
-			\item Quote: exact copy of a portion of text with an indication that one is not the original author
-		\end{itemize}
-	\item Statement: definite and clear expression of the nature or truth of something
-	\item Description: objective account of a system, person or event
-		\begin{itemize}
-			\item Event description: description of an event
-			\item System description: retranscription of a system's settings or specifications (e.g. \textit{"My ubuntu 1 bandwidth settings are set to -1", "I am using ubuntu 12.04"})
-			\item Author profile: description of the author's identity, habits, experiences, preferences or skills (e.g. \textit{"Coming from a Windows world, I've probably been spoiled but..."})
-		\end{itemize}
-	\item Assimilation: expression of a belief in the similarity or non-similarity of two things
-		\begin{itemize}
-			\item Assertion: a confident and forceful statement of fact (e.g. \textit{"DD will work over the network", "Even OS X has nothing close to it, unfortunately"})
-			\item Guess: estimate or supposition without sufficient information to be sure of being correct (e.g. \textit{""}).
-			\item Correction: rectification of an alleged error or inaccuracy
-		\end{itemize}
-\end{itemize}
-
-\textbf{Commissives}
-\vspace{0.1cm}
-
-Commissives are sentences containing a stated commitment from the author.
-
-\begin{itemize}
-	\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search..."})
-	\item Channel change: announcement that the author is going to switch or fork the conversation to a different communication channel (e.g. \textit{"I'll file a wishlist bug for this"})
-\end{itemize}
-
-\textbf{Directives}
-\vspace{0.1cm}
-
-Directives are sentences containing an expectation that readers will do something as a response.
-
-\begin{itemize}
-	\item Question: a sentence worded or expressed so as to explicitly elicit information (e.g. \textit{"Should I just change them by hand?", "Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
-		\item Clarification request: request for more specific information or confirmation that the author has correctly understood an utterance (e.g. \textit{"do you mean the starterbar from gdesklets?", "Which exact packages are you getting an error from?"})
-	\item Request for assistance: call for help (e.g. \textit{"please help!", "can anyone help me???", "i could use some help"})
-	\item Suggestion: an idea submitted for consideration
-	\item Instruction: information telling how something should be done (e.g. \textit{"Open a terminal"})
-\end{itemize}
-
-\textbf{Expressives}
-\vspace{0.1cm}
-
-Expressives are sentences containing a statement of the author's psychological state.
-
-\begin{itemize}
-	\item Greeting: polite words of salutation
-		\begin{itemize}
-			\item General greeting: greeting directed to no one in particular (e.g. \textit{"Hi all", "Hello all"})
-			\item Targeted greeting: greeting directed at a specific participant or group of participants (e.g. \textit{"Hey Steve"})
-		\end{itemize}
-	\item Signoff: the conclusion of a message (e.g. \textit{"see you", "-best - greg"})
-	\item Thanks: an expression of gratitude
-		\begin{itemize}
-			\item Thanks in advance: an expression of anticipated gratitude (e.g. \textit{"Thanks for any help,"})
-			\item Thanks in reaction: an expression of gratitude for some specific assistance (e.g. \textit{"Thanks I'll try that!"})
-		\end{itemize}
-	\item Opinion: expression of a subjective judgment on a thing or situation (e.g. \textit{"what a nightmare", "this is bullshit", "this OS sucks"})
-		\begin{itemize}
-			\item Feedback: specific type of constructive opinion destined to be used as a basis for the improvement of a product or service
-		\end{itemize}
-	\item False question: question whose function is not to elicit an answer
-		\begin{itemize}
-			\item Rhetorical question: question asked in order to make a point (e.g. \textit{"Are you seriously implying that he should reinstall Ubuntu because of a cosmetic issue?", "Wow, CRTs to store data?"})
-			\item Personal interrogation: question asked in order to express a sentiment (e.g. \textit{"I wonder how it works?", "Come on, how hard can this be?"})
-		\end{itemize}
-	\item Expression of solution confidence: expression of the author's level of confidence in a proposed solution (e.g. \textit{"I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need"})
-	\item Expression of solution preference: expression of the author's preferences (to varying degree) towards a specific type of solution
-\end{itemize}
-
-\subsection{Problem/Solution Classes}
-
-The following taxonomy aims at capturing the way conversation participants introduce, explain and communicate about these problems and solutions.
-
-The whole text doesn't have to be classified into these classes. Some sentences don't belong in any of them. 
-
-\subsubsection{Primary Classes}
-
-In online conversations bearing expressions of need and attempts at answering to those needs, we consider that sentences may bear information on two types of abstract objects: problems, and solutions.
-
-These two classes are mutually exclusive.
-
-\begin{itemize}
-	\item Problem: an unwelcome matter or situation affecting one or several participants, that is considered harmful or needs to be resolved or worked around.
-	\item Solution: a way of solving or working around a specific problem previously introduced in the conversation, usually in the first message of the thread.
-\end{itemize}
-
-\subsubsection{Secondary Classes}
-
-These classes define the kind of information a sentence brings about a problem or a solution.
-
-These classes are not mutually exclusive: a single sentence can belong into multiple classes.
-
-\begin{itemize}
-	\item Definition: information about the nature of the object
-		\begin{itemize}
-			\item Statement: brings new information on the object (for example, one of the steps of a solution, or the symptoms of a perceived problem)
-					\begin{itemize}
-						\item Problem statement: description of the issues that need to be addressed in order to consider the problem at hand resolved (e.g. \textit{"The problem is (If its not clear from the picture), that the black area should be brown, or transparent or whatever as the background, but you probably guessed it."})
-						\item Goal statement: statement that describes future state of affairs and provides general direction, purpose or intent of what needs to be accomplished (e.g. \textit{"I would like to be able to send the whole package via email to acquaintances in ISO form and let them make their own DVDs"})
-						\item Question: formulation of the problem as a question (e.g. \textit{"Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
-						\item Expression of solution preference: expression of the author's preferences (to varying degree) towards a specific type of solution
-					\end{itemize}
-			\item Correction: brings new information on the object while making some previously stated information obsolete
-			\item Explanation: explains why the source of the problem, or why the solution is supposed to work; adds deeper level information
-		\end{itemize}
-	\item Reception: information about the evolution and status of the object and the participants interactions about the object
-		\begin{itemize}
-			\item Confirmation: confirms the existence or properties of the problem, or that a solution works
-			\item Assimilation: a claim that a problem or solution has been observed by a different participant, in a different context, or both
-				\begin{itemize}	
-					\item Problem assimilation: assimilation of a given problem to another (e.g. \textit{"I had a similar problem"})
-				\end{itemize}
-			\item Acknowledgement: the action of expressing the good reception of new information and mesures taken as a response
-				\begin{itemize}
-					\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search...", "Thanks I'll try that!"})
-					\item Trial report: reporting of effects of a proposed solution (e.g. \textit{"I did try apt-cache search geotiff but it didn't work", "No such luck"})
-				\end{itemize}
-			\item Refutal: claim that the problem is not solvable or that the solution cannot work
-			\item Appraisal: appraisal of the merits of the solution or the proper reporting of a problem
-				\begin{itemize}
-					\item Rhetorical question: objection formulated as a rhetorical question (e.g. \textit{"Are you seriously implying that he should reinstall Ubuntu because of a cosmetic issue?", "Wow, CRTs to store data?"}
-					\item Expression of solution confidence: expression of the author's level of confidence in a proposed solution (e.g. \textit{"I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need"})
-				\end{itemize}
-			\item Resolution: confirms that a solution works and/or that a problem has been resolved
-		\end{itemize}
-\end{itemize}
+\newpage
 
 \bibliographystyle{apalike}
 \bibliography{bibliography}

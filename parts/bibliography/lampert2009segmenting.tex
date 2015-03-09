@@ -1,0 +1,43 @@
+\subsubsection{Segmentation of email message text}
+
+Here we explain the work of \cite{lampert2009segmenting}. It is relevant to our work because of their goal, which is to classify sentences or text fragments as belonging to such or such message zone, and because of the kind of data they work with: email messages.
+
+\vspace{0.5cm}
+\textbf{Goals:}
+\vspace{0.1cm}
+
+The authors attempt to segment emails into several prototypical areas, called \textit{email zones}. They call their system "Zebra".
+
+\vspace{0.5cm}
+\textbf{Email zones:}
+\vspace{0.1cm}
+
+There are three superclasses containing nine different classes of email zones.
+
+\textit{Sender zones} contain text written by the current sender. This superclass contains the following subclasses: \textit{author} (new content by the sender), \textit{greeting} (polite greetings at the beginning of a message), and \textit{signoff} (closing words of a message).
+
+\textit{Quoted conversation zones} include content quoted from other messages. The subclasses for this superclass are: \textit{reply} (content quoted from a previous message in the thread) and \textit{forward} (content from an email outside the thread that has been forwarded by the current sender).
+
+\textit{Boilerplate zones} contain reusable message content, typically automatically appended to a message. Subclasses include: \textit{signature} (contact information automatically appended at the end of a message), \textit{advertising} (advertising material, typically found at the end of the message), \textit{disclaimer} (legal disclaimers and privacy statements), and \textit{attachment} (automated text indicating attached documents).
+
+\vspace{0.5cm}
+\textbf{Classification:}
+\vspace{0.1cm}
+
+The authors consider that each line of text in the body of a message belongs to one of these \textit{email zones}. The authors tried two approaches: in the first one, a classifier segments a message into zone fragments and then attempts to classify the resulting fragments. In the second approach, the classifier simply works on a line-by-line basis.
+
+In the first approach, the fragment-based one, the message is segmented based on detected \textit{zone boundaries}. These boundaries are identified thanks to what the authors call "buffer lines", i.e. blank lines or lines containing only whitespace or punctuation characters.
+
+The classifier is based on SVMs (Support Vector Machines) and uses graphic, orthographic and lexical features to categorize lines and text fragments.
+
+\vspace{0.5cm}
+\textbf{Evaluation:}
+\vspace{0.1cm}
+
+The training data for their classifier consists of almost 400 messages from the Enron email corpus \cite{klimt2004enron}. To build the gold standard, the authors chose to use only a single annotator since they believe the task to be relatively uncontroversial. Each line - blank lines excepted - was marked by the annotator as belonging to one of the nine zones. They used the resulting 7,922 annotated lines (out of 11,881) as training data for their classifier.
+
+The results are calculated by 10-fold cross-validation. 
+
+The zone boundary detection system (used for the fragment based approach) reaches 90\% accuracy.
+
+Concerning zone classification, interestingly, the line-based approach outperformed the fragment-based one by a small margin, probably due to the 10\% of inaccuracies in boundary detection. Zebra obtains a 91.53\% accuracy for the classification of lines into the three superclasses, and 87.01\% in all nine classes.

@@ -1,0 +1,94 @@
+\subsubsection{Speech act classification applied to forum posts}
+
+Here we explain the work of \cite{kim2010taggingandlinking}. Their research is relevant to our work because of their goal (to link and classify messages) and their corpus (email messages). Their taxonomy, however, is not based on dialog acts.
+
+\vspace{0.5cm}
+\textbf{Methodology:}
+\vspace{0.1cm}
+
+The authors annotate both threads and posts in a corpus built from the CNET forums\footnote{http://forums.cnet.com}. Two annotators use a dedicated tool\footnote{http://mandrake.csse.unimelb.edu.au/~rbp/cgi-bin/su/Classify.py} for the annotation task. Before starting to annotate the overall data set, a pilot annotation was performed to ensure that both annotators had the same understanding of the taxonomy.
+
+\vspace{0.5cm}
+\textbf{Taxonomy:}
+\vspace{0.1cm}
+
+First, they classify threads into two groups of classes: the basic group, which is further subdivided into \textit{Solution Type} classes and \textit{Problem Source} classes, as well as a miscellaneous group. The different classes are detailed in table \ref{fig:threadClasses}. \textit{Solution Type} and \textit{Problem Source} classes can be used either separately or together, therefore there is an additional combined class set made of each combination of a \textit{Solution Type} class and a \textit{Problem Source} class (e.g. \textit{Search-OS} or \textit{Install-Network}). The combined class set being the superset of basic class sets, it was used to do the annotation.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y Y}
+		Class & Group \\
+		\toprule
+		Support & Solution Type \\
+		Documentation & Solution Type \\
+		Install & Solution Type \\
+		Search & Solution Type \\
+		\midrule
+		Hardware & Problem Source \\
+		Operating System & Problem Source \\
+		Software & Problem Source \\
+		Media & Problem Source \\
+		Network & Problem Source \\
+		Programming & Problem Source \\
+		\midrule
+		Spam & Miscellaneous \\
+		Other & Miscellaneous \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Thread classes in \cite{kim2010taggingandlinking}}
+	\label{fig:threadClasses}
+\end{table}
+
+Then, they annotate each individual post with one or several post classes. These classes are categorized into two groups, the answer group and the question group, plus three single classes. The different classes used are detailed in table \ref{fig:postClasses}.
+
+\begin{table}
+	\begin{tabularx}{\textwidth}{Y Y}
+		Class & Group \\
+		\toprule
+		Answer-Answer & Answer \\
+		Answer-Add & Answer \\
+		Answer-Correction & Answer \\
+		Answer-Confirmation & Answer \\
+		Answer-Objection & Answer \\
+		\midrule
+		Question-Question & Question \\
+		Question-Add & Question \\
+		Question-Correction & Question \\
+		Question-Confirmation & Question \\
+		\midrule
+		Resolution & - \\
+		Reproduction & - \\
+		Other & - \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Post classes in \cite{kim2010taggingandlinking}}
+	\label{fig:postClasses}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{Annotator agreement:}
+\vspace{0.1cm}
+
+The authors use Cohen's Kappa to compute annotator agreement:
+
+$$\kappa = \frac{P(a) - P(e)}{1 - P(e)}$$
+
+Where $P(a)$ refers to the relative observed agreement between two annotators, and $P(e)$ is the hypothetical probability of chance agreement between two annotators.
+
+However, as they write: "\textit{The standard Cohen’s Kappa cannot be used in multi-class annotation tasks. By the time the annotation process started, no standard methodology for calculating Cohen’s Kappa for multi-class tasks was found. Therefore, an extended method for calculating $\kappa$ value was proposed to address this problem.}"
+
+They propose an improved Cohen's Kappa for a multi-class situation, but the methodology is not applicable to our case because it takes into account the link information for each class (a concept we do not consider at all).
+
+\vspace{0.5cm}
+\textbf{Classification:}
+\vspace{0.1cm}
+
+The authors use four different models for thread classification: 1 Nearest Neighbor, Naïve Bayes and Support Vector Machine. A majority class model (ZeroR) and a random model (RAND) are used as baselines. Features are weighed using four different schemes: Information Gain (IG), Term Frequency-Inverse Document Frequency (TF-IDF), raw count and simple binary. For post classification, the authors use a conventional Maximum Entropy learner\footnote{http://maxent.sourceforge.net/} as well as two structural learners : SVM-HMMs and CRFs (using \emph{CRF++}\footnote{http://crfpp.sourceforge.net/
+})
+
+Features for threads are built by using the initial post or concatenating all posts in the thread to form the "text" of the thread. They then construct different bag-of-words feature sets by tuning different parameters such as input text, pre-processing, tokenization method, and $n$-gram length. For posts, features used include lexical, structural, contextual, and semantic features.
+
+\vspace{0.5cm}
+\textbf{Evaluation:}
+\vspace{0.1cm}
+
+Results for both thread classification and post classification are evaluated using micro-average precision ($P_{\mu}$), recall ($R_{\mu}$), F-score ($F_{\mu}$) and macro-averaged precision ($P_{M}$), recall ($R_{M}$) and F1-score ($F_{M}$) on a stratified\footnote{The authors make sure that \textit{"if a given post is contained in the test data for a given iteration, all other posts in that same thread are also in the test data (or more pertinently, not in the training data)"}} 10-fold cross-validation.

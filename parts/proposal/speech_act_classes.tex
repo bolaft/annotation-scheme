@@ -1,0 +1,95 @@
+\subsection{Speech Act Classes}
+\label{subsec:speech_act_classes}
+
+The \textbf{speech act} superclass contains four subclasses: \textbf{assertives}, \textbf{commissives}, \textbf{directives} and \textbf{expressives}. 
+
+They are derived from the five classes defined in \cite{searle1976taxonomy} (the fifth class, "declarations", was omitted because we assume it will almost never appear in our corpus: \cite{qadir2011classifying} found almost no example of it in their datasets).
+
+\vspace{0.3cm}
+\textbf{Assertives}
+\vspace{0.1cm}
+
+Assertives are sentences that commit a speaker to the truth of the expressed proposition.
+
+\begin{itemize}
+	\item Subjective report: account of something the author has observed, heard, done, or investigated
+		\begin{itemize}
+			\item Action report: reporting of actions taken (e.g. \textit{"I did try apt-cache search geotiff but it didn't work", "I upgraded my system to 10.04 via clean install"})
+			\item Result report: reporting of the results of actions taken (e.g. \textit{"I did try apt-cache search geotiff but it didn't work", "No such luck"})
+				\begin{itemize}
+					\item Solution research result report: specific type of result report pertaining to the search for a solution (e.g. \textit{"I couldn't find anything on the forums"})
+				\end{itemize}
+			\item Observation: a remark, statement, or comment based on something one noticed ("It doesn't happen every time I move the cursor, it is completely random")
+		\end{itemize}
+	\item Objective report: exact reporting of something without author interpretation
+		\begin{itemize}
+			\item Computer text: copy-and-paste of code, log, or commands (e.g. \textit{"usermod - G admin 2ndroot"})
+			\item Quote: exact copy of a portion of text with an indication that one is not the original author
+		\end{itemize}
+	\item Statement: definite and clear expression of the nature or truth of something
+	\item Description: objective account of a system, person or event
+		\begin{itemize}
+			\item Event description: description of an event
+			\item System description: retranscription of a system's settings or specifications (e.g. \textit{"My ubuntu 1 bandwidth settings are set to -1", "I am using ubuntu 12.04"})
+			\item Author profile: description of the author's identity, habits, experiences, preferences or skills (e.g. \textit{"Coming from a Windows world, I've probably been spoiled but..."})
+		\end{itemize}
+	\item Assimilation: expression of a belief in the similarity or non-similarity of two things
+		\begin{itemize}
+			\item Assertion: a confident and forceful statement of fact (e.g. \textit{"DD will work over the network", "Even OS X has nothing close to it, unfortunately"})
+			\item Guess: estimate or supposition without sufficient information to be sure of being correct (e.g. \textit{""}).
+			\item Correction: rectification of an alleged error or inaccuracy
+		\end{itemize}
+\end{itemize}
+
+\textbf{Commissives}
+\vspace{0.1cm}
+
+Commissives are sentences containing a stated commitment from the author.
+
+\begin{itemize}
+	\item Acknowledgment-Commitment: a commitment to do something in reaction to a previous message in the thread (e.g. \textit{"Ok thanks I'll try that as soon as I get home", "Hopefully it's explained in detail in there, I will search..."})
+	\item Channel change: announcement that the author is going to switch or fork the conversation to a different communication channel (e.g. \textit{"I'll file a wishlist bug for this"})
+\end{itemize}
+
+\textbf{Directives}
+\vspace{0.1cm}
+
+Directives are sentences containing an expectation that readers will do something as a response.
+
+\begin{itemize}
+	\item Question: a sentence worded or expressed so as to explicitly elicit information (e.g. \textit{"Should I just change them by hand?", "Is there anyway to recover these short of recreating everything from scratch and restoring from backup?"})
+		\item Clarification request: request for more specific information or confirmation that the author has correctly understood an utterance (e.g. \textit{"do you mean the starterbar from gdesklets?", "Which exact packages are you getting an error from?"})
+	\item Request for assistance: call for help (e.g. \textit{"please help!", "can anyone help me???", "i could use some help"})
+	\item Suggestion: an idea submitted for consideration
+	\item Instruction: information telling how something should be done (e.g. \textit{"Open a terminal"})
+\end{itemize}
+
+\textbf{Expressives}
+\vspace{0.1cm}
+
+Expressives are sentences containing a statement of the author's psychological state.
+
+\begin{itemize}
+	\item Greeting: polite words of salutation
+		\begin{itemize}
+			\item General greeting: greeting directed to no one in particular (e.g. \textit{"Hi all", "Hello all"})
+			\item Targeted greeting: greeting directed at a specific participant or group of participants (e.g. \textit{"Hey Steve"})
+		\end{itemize}
+	\item Signoff: the conclusion of a message (e.g. \textit{"see you", "-best - greg"})
+	\item Thanks: an expression of gratitude
+		\begin{itemize}
+			\item Thanks in advance: an expression of anticipated gratitude (e.g. \textit{"Thanks for any help,"})
+			\item Thanks in reaction: an expression of gratitude for some specific assistance (e.g. \textit{"Thanks I'll try that!"})
+		\end{itemize}
+	\item Opinion: expression of a subjective judgment on a thing or situation (e.g. \textit{"what a nightmare", "this is bullshit", "this OS sucks"})
+		\begin{itemize}
+			\item Feedback: specific type of constructive opinion destined to be used as a basis for the improvement of a product or service
+		\end{itemize}
+	\item False question: question whose function is not to elicit an answer
+		\begin{itemize}
+			\item Rhetorical question: question asked in order to make a point (e.g. \textit{"Are you seriously implying that he should reinstall Ubuntu because of a cosmetic issue?", "Wow, CRTs to store data?"})
+			\item Personal interrogation: question asked in order to express a sentiment (e.g. \textit{"I wonder how it works?", "Come on, how hard can this be?"})
+		\end{itemize}
+	\item Expression of solution confidence: expression of the author's level of confidence in a proposed solution (e.g. \textit{"I don't know much about it, I just discovered it on gnomefiles.org", "However, it may do what you need"})
+	\item Expression of solution preference: expression of the author's preferences (to varying degree) towards a specific type of solution
+\end{itemize}
