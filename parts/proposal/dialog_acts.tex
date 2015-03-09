@@ -159,14 +159,14 @@ The annotation of dialogue act dependencies in the Task dimension would be very 
 
 Up to this point our annotation allow us to know what an utterance is \textit{about} (the semantic content's dimension) and how it should be \textit{processed} (the act's communicative function). However, additional data on utterances would be useful to reach an additional level of understanding of the dialogue. 
 
-\cite{petukhova2010introducing} introduces the notion of \textit{qualifier}, that are used in conjunction with communicative functions to describe the utterance more precisely. They propose a representation of multimodal dialogue behaviour expressing intentions with various possible qualifications, relating to uncertainty, conditionality, partiality or a speaker’s emotional state and attitude towards a proposition or participant.
+\cite{petukhova2010introducing} introduces the notion of \textit{qualifier}, that are used in conjunction with communicative functions to describe the utterance more precisely. They propose a representation of dialogue behaviour expressing intentions with different possible qualifications, relating to uncertainty, conditionality, partiality and mode.
 
 The four qualifiers are:
 
 \begin{itemize}
-	\item Modality: epistemic modal qualifiers specify the strength of the speaker's belief about the validity of a proposition (only information transfer functions are concerned by this qualifier)
-	\item Conditionality: they refer to the possibility (with respect of ability or power), necessity or volition of performing actions (only action planning functions are concerned by this qualifier)
-	\item Partiality: they restrict the scope of the communicative function to only a part of the utterance to which the current sentence is related (only backward-looking functions are concerned by this qualifier)
+	\item Modality: epistemic modal qualifiers specify the strength of the speaker's belief about the truth of a proposition (only information transfer functions are concerned by this qualifier)
+	\item Conditionality: they represent the ability, necessity or volition of performing actions (only action planning functions are concerned by this qualifier)
+	\item Partiality: they limits the scope of the communicative function to only a part of the dialogue act to which the current segment is related (only backward-looking functions are concerned by this qualifier)
 	\item Mode: broad category of qualifiers concerned with the speaker's attitude and emotional state
 \end{itemize}
 
@@ -226,7 +226,7 @@ The annotation of utterances of the Task dimension with these items, done in the
 	\item P1: Je suis sous Ubuntu 12.04
 	\item P1: Merci pour votre aide
 	\item P2: Il doit exister une licence professionnelle de Dragon Naturally Speaking
-	\item P2: Sans doute très chère et je ne sais pas si elle existe toujours
+	\item P3: Oui mais elle est sans doute très chère, et pas libre...
 \end{enumerate}
 
 Could be annotated in the following manner:
@@ -236,10 +236,23 @@ Could be annotated in the following manner:
 	\item Task: Assert\{Context\}
 	\item Social Obligations: Express
 	\item Task: Assert[uncertain]\{Solution-Entity\}
-	\item Task: Assert\{Solution-Limitation\}
+	\item Task: React\{Solution-Limitation\}
 \end{enumerate}
 
+With that information, two objects can be created and their different attributes "filled" with semantic information:
 
+\begin{itemize}
+	\item Problem 1:
+		\begin{itemize}
+			\item Goal: to use vocal recognition on linux
+			\item Context: a system operating Ubuntu 12.04
+		\end{itemize}
+	\item Solution 1:
+		\begin{itemize}
+			\item Solution-Entity: the software "Dragon Naturally Speaking"
+			\item Limitations: it's expensive, it's proprietary
+		\end{itemize}
+\end{itemize}
 
 \subsubsection{Dimension-specific function specializations}
 
